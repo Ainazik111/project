@@ -1,0 +1,514 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8"/>-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+<!--  <title>Explore Kyrgyzstan</title>-->
+<!--  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>-->
+<!--  <style>-->
+<!--    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }-->
+
+<!--    :root {-->
+<!--      &#45;&#45;red:  #E8001D;-->
+<!--      &#45;&#45;sun:  #FFD700;-->
+<!--      &#45;&#45;navy: #0D1B2A;-->
+<!--      &#45;&#45;deep: #091422;-->
+<!--      &#45;&#45;white: #FFFFFF;-->
+<!--    }-->
+
+<!--    html { scroll-behavior: smooth; }-->
+<!--    body {-->
+<!--      font-family: 'Inter', sans-serif;-->
+<!--      background: #f0f4f8;-->
+<!--      color: #0D1B2A;-->
+<!--      overflow-x: hidden;-->
+<!--    }-->
+
+<!--    /* ── NAV ── */-->
+<!--    nav {-->
+<!--      position: fixed;-->
+<!--      top: 0; left: 0; right: 0;-->
+<!--      z-index: 100;-->
+<!--      display: flex;-->
+<!--      justify-content: space-between;-->
+<!--      align-items: center;-->
+<!--      padding: 1.1rem 3rem;-->
+<!--      background: rgba(9,20,34,0.92);-->
+<!--      backdrop-filter: blur(14px);-->
+<!--      border-bottom: 1px solid rgba(255,255,255,0.07);-->
+<!--    }-->
+<!--    .logo {-->
+<!--      font-family: 'Unbounded', sans-serif;-->
+<!--      font-size: .95rem;-->
+<!--      font-weight: 700;-->
+<!--      color: #fff;-->
+<!--      letter-spacing: .06em;-->
+<!--    }-->
+<!--    .logo em { color: var(&#45;&#45;sun); font-style: normal; }-->
+<!--    .nav-flag { font-size: 1.5rem; }-->
+
+<!--    /* ── HERO ── */-->
+<!--    .hero {-->
+<!--      min-height: 100vh;-->
+<!--      display: flex;-->
+<!--      flex-direction: column;-->
+<!--      justify-content: center;-->
+<!--      align-items: center;-->
+<!--      text-align: center;-->
+<!--      position: relative;-->
+<!--      padding: 8rem 2rem 5rem;-->
+<!--      background: linear-gradient(150deg, #0D1B2A 0%, #1a0a2e 40%, #2a0a0a 70%, #0D1B2A 100%);-->
+<!--      overflow: hidden;-->
+<!--    }-->
+
+<!--    /* Kyrgyz ornament grid bg */-->
+<!--    .hero::before {-->
+<!--      content: '';-->
+<!--      position: absolute; inset: 0;-->
+<!--      background-image:-->
+<!--        repeating-linear-gradient(0deg, rgba(255,215,0,.04) 0px, rgba(255,215,0,.04) 1px, transparent 1px, transparent 60px),-->
+<!--        repeating-linear-gradient(90deg, rgba(255,215,0,.04) 0px, rgba(255,215,0,.04) 1px, transparent 1px, transparent 60px);-->
+<!--      pointer-events: none;-->
+<!--    }-->
+
+<!--    /* Glow blobs */-->
+<!--    .blob {-->
+<!--      position: absolute;-->
+<!--      border-radius: 50%;-->
+<!--      filter: blur(80px);-->
+<!--      pointer-events: none;-->
+<!--    }-->
+<!--    .blob-red  { width: 500px; height: 500px; background: rgba(232,0,29,.18); top: -100px; left: -100px; }-->
+<!--    .blob-gold { width: 400px; height: 400px; background: rgba(255,215,0,.1); bottom: 0; right: -80px; }-->
+<!--    .blob-blue { width: 350px; height: 350px; background: rgba(41,128,185,.12); top: 30%; left: 40%; }-->
+
+<!--    /* Tunduk SVG */-->
+<!--    .tunduk-bg {-->
+<!--      position: absolute;-->
+<!--      top: 50%; left: 50%;-->
+<!--      transform: translate(-50%, -50%);-->
+<!--      width: min(650px, 90vw);-->
+<!--      height: min(650px, 90vw);-->
+<!--      opacity: 0.045;-->
+<!--      animation: spin 80s linear infinite;-->
+<!--    }-->
+<!--    @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }-->
+
+<!--    /* Mountains */-->
+<!--    .mountains {-->
+<!--      position: absolute;-->
+<!--      bottom: 0; left: 0; right: 0;-->
+<!--      height: 180px;-->
+<!--      opacity: 0.09;-->
+<!--    }-->
+
+<!--    /* ── SYMBOLS ROW ── */-->
+<!--    .symbols {-->
+<!--      display: flex;-->
+<!--      align-items: center;-->
+<!--      gap: 2rem;-->
+<!--      margin-bottom: 2.2rem;-->
+<!--      position: relative; z-index: 2;-->
+<!--      animation: up .7s ease both;-->
+<!--    }-->
+<!--    @keyframes up {-->
+<!--      from { opacity:0; transform: translateY(20px); }-->
+<!--      to   { opacity:1; transform: translateY(0); }-->
+<!--    }-->
+
+<!--    /* Flag */-->
+<!--    .flag {-->
+<!--      width: 88px; height: 58px;-->
+<!--      border-radius: 5px;-->
+<!--      overflow: hidden;-->
+<!--      box-shadow: 0 6px 30px rgba(232,0,29,.55), 0 0 0 2px rgba(255,255,255,.15);-->
+<!--    }-->
+
+<!--    /* CoA circle */-->
+<!--    .coa {-->
+<!--      width: 64px; height: 64px;-->
+<!--      border-radius: 50%;-->
+<!--      background: linear-gradient(135deg, #1a3558, #0d2035);-->
+<!--      border: 2px solid rgba(255,215,0,.5);-->
+<!--      display: flex; align-items: center; justify-content: center;-->
+<!--      font-size: 1.9rem;-->
+<!--      box-shadow: 0 6px 24px rgba(0,0,0,.5), 0 0 0 4px rgba(255,215,0,.08);-->
+<!--      animation: up .7s .15s ease both;-->
+<!--    }-->
+
+<!--    /* Ornament divider */-->
+<!--    .orn {-->
+<!--[14.06.2026 20:40] А: display: flex; align-items: center; gap: .4rem;-->
+<!--      animation: up .7s .08s ease both;-->
+<!--    }-->
+<!--    .orn-line { width: 32px; height: 1.5px; }-->
+<!--    .orn-line.l { background: linear-gradient(90deg, transparent, var(&#45;&#45;sun)); }-->
+<!--    .orn-line.r { background: linear-gradient(90deg, var(&#45;&#45;sun), transparent); }-->
+<!--    .orn-diamond { width: 7px; height: 7px; background: var(&#45;&#45;sun); transform: rotate(45deg); }-->
+
+<!--    /* Hero text */-->
+<!--    .hero-label {-->
+<!--      font-size: .68rem; font-weight: 600; letter-spacing: .22em;-->
+<!--      text-transform: uppercase; color: var(&#45;&#45;sun);-->
+<!--      margin-bottom: .9rem;-->
+<!--      position: relative; z-index: 2;-->
+<!--      animation: up .7s .25s ease both;-->
+<!--    }-->
+<!--    .hero h1 {-->
+<!--      font-family: 'Unbounded', sans-serif;-->
+<!--      font-size: clamp(2rem, 6vw, 4.8rem);-->
+<!--      font-weight: 900;-->
+<!--      color: #fff;-->
+<!--      line-height: 1.05;-->
+<!--      letter-spacing: -.02em;-->
+<!--      max-width: 780px;-->
+<!--      position: relative; z-index: 2;-->
+<!--      animation: up .7s .35s ease both;-->
+<!--    }-->
+<!--    .hero h1 .r { color: var(&#45;&#45;red); }-->
+<!--    .hero h1 .g { color: var(&#45;&#45;sun); }-->
+
+<!--    .hero-sub {-->
+<!--      margin-top: 1.1rem;-->
+<!--      font-size: clamp(.9rem, 2vw, 1.05rem);-->
+<!--      color: rgba(255,255,255,.55);-->
+<!--      font-weight: 300; line-height: 1.8;-->
+<!--      max-width: 480px;-->
+<!--      position: relative; z-index: 2;-->
+<!--      animation: up .7s .45s ease both;-->
+<!--    }-->
+
+<!--    .scroll-hint {-->
+<!--      margin-top: 2.5rem;-->
+<!--      font-size: .72rem; letter-spacing: .15em;-->
+<!--      text-transform: uppercase; color: rgba(255,255,255,.3);-->
+<!--      display: flex; flex-direction: column; align-items: center; gap: .5rem;-->
+<!--      position: relative; z-index: 2;-->
+<!--      animation: up .7s .6s ease both;-->
+<!--    }-->
+<!--    .scroll-hint span {-->
+<!--      animation: bounce 1.5s infinite;-->
+<!--    }-->
+<!--    @keyframes bounce {-->
+<!--      0%,100% { transform: translateY(0); }-->
+<!--      50% { transform: translateY(6px); }-->
+<!--    }-->
+
+<!--    /* ── CARDS SECTION ── */-->
+<!--    .cards-section {-->
+<!--      padding: 6rem 2rem 7rem;-->
+<!--      max-width: 1100px;-->
+<!--      margin: 0 auto;-->
+<!--    }-->
+<!--    .cards-header {-->
+<!--      text-align: center;-->
+<!--      margin-bottom: 3.5rem;-->
+<!--    }-->
+<!--    .cards-header .eyebrow {-->
+<!--      font-size: .68rem; font-weight: 600; letter-spacing: .2em;-->
+<!--      text-transform: uppercase; color: var(&#45;&#45;red);-->
+<!--      display: block; margin-bottom: .7rem;-->
+<!--    }-->
+<!--    .cards-header h2 {-->
+<!--      font-family: 'Unbounded', sans-serif;-->
+<!--      font-size: clamp(1.4rem, 3vw, 2rem);-->
+<!--      font-weight: 800; color: var(&#45;&#45;navy);-->
+<!--    }-->
+<!--    .cards-header p {-->
+<!--      margin-top: .7rem;-->
+<!--      color: #6b7a8d; font-size: .92rem; font-weight: 300;-->
+<!--    }-->
+
+<!--    /* ── THE 3D BUTTONS ── */-->
+<!--    .cards-grid {-->
+<!--      display: grid;-->
+<!--      grid-template-columns: repeat(3, 1fr);-->
+<!--      gap: 1.6rem;-->
+<!--    }-->
+
+<!--    .btn-card {-->
+<!--      position: relative;-->
+<!--      text-decoration: none;-->
+<!--      display: block;-->
+<!--      border-radius: 18px;-->
+<!--      padding: 2.4rem 2rem 2rem;-->
+<!--      color: #fff;-->
+<!--      overflow: hidden;-->
+<!--      /* 3D effect */-->
+<!--      box-shadow:-->
+<!--        0 2px 0 rgba(0,0,0,.35),-->
+<!--        0 6px 0 rgba(0,0,0,.2),-->
+<!--        0 12px 30px rgba(0,0,0,.2),-->
+<!--        inset 0 1px 0 rgba(255,255,255,.25);-->
+<!--      transition: transform .15s ease, box-shadow .15s ease;-->
+<!--      transform: translateY(0);-->
+<!--      cursor: pointer;-->
+<!--    }-->
+<!--    .btn-card:active {-->
+<!--      transform: translateY(5px);-->
+<!--      box-shadow:-->
+<!--        0 1px 0 rgba(0,0,0,.35),-->
+<!--        0 2px 0 rgba(0,0,0,.2),-->
+<!--        0 4px 12px rgba(0,0,0,.2),-->
+<!--        inset 0 1px 0 rgba(255,255,255,.2);-->
+<!--    }-->
+<!--    .btn-card:hover {-->
+<!--      transform: translateY(-4px);-->
+<!--      box-shadow:-->
+<!--        0 6px 0 rgba(0,0,0,.3),-->
+<!--        0 14px 0 rgba(0,0,0,.15),-->
+<!--        0 24px 50px rgba(0,0,0,.25),-->
+<!--        inset 0 1px 0 rgba(255,255,255,.3);-->
+<!--    }-->
+
+<!--    /* Shine overlay */-->
+<!--    .btn-card::before {-->
+<!--      content: '';-->
+<!--      position: absolute; top: 0; left: 0; right: 0;-->
+<!--      height: 55%;-->
+<!--      background: linear-gradient(180deg, rgba(255,255,255,.18) 0%, transparent 100%);-->
+<!--      border-radius: 18px 18px 0 0;-->
+<!--      pointer-events: none;-->
+<!--    }-->
+
+<!--    /* Gradient backgrounds per card */-->
+<!--    .btn-card.bishkek { background: linear-gradient(145deg, #1a3a6b 0%, #0d2a4a 100%); }-->
+<!--    .btn-card.-->
+<!--[14.06.2026 20:40] А: food    { background: linear-gradient(145deg, #8B1a1a 0%, #5a0d0d 100%); }-->
+<!--    .btn-card.history { background: linear-gradient(145deg, #5a3e00 0%, #3a2700 100%); }-->
+<!--    .btn-card.guide   { background: linear-gradient(145deg, #1a5a3a 0%, #0d3a25 100%); }-->
+<!--    .btn-card.nature  { background: linear-gradient(145deg, #1a4a1a 0%, #0d300d 100%); }-->
+<!--    .btn-card.places  { background: linear-gradient(145deg, #4a1a5a 0%, #2d0d3a 100%); }-->
+
+<!--    .btn-icon {-->
+<!--      font-size: 3rem;-->
+<!--      line-height: 1;-->
+<!--      margin-bottom: 1rem;-->
+<!--      display: block;-->
+<!--      filter: drop-shadow(0 4px 8px rgba(0,0,0,.3));-->
+<!--    }-->
+<!--    .btn-title {-->
+<!--      font-family: 'Unbounded', sans-serif;-->
+<!--      font-size: 1rem;-->
+<!--      font-weight: 800;-->
+<!--      margin-bottom: .5rem;-->
+<!--      letter-spacing: -.01em;-->
+<!--    }-->
+<!--    .btn-desc {-->
+<!--      font-size: .78rem;-->
+<!--      color: rgba(255,255,255,.6);-->
+<!--      font-weight: 300;-->
+<!--      line-height: 1.55;-->
+<!--    }-->
+<!--    .btn-arrow {-->
+<!--      position: absolute;-->
+<!--      bottom: 1.5rem; right: 1.5rem;-->
+<!--      width: 32px; height: 32px;-->
+<!--      border-radius: 50%;-->
+<!--      background: rgba(255,255,255,.15);-->
+<!--      display: flex; align-items: center; justify-content: center;-->
+<!--      font-size: .85rem;-->
+<!--      transition: background .2s, transform .2s;-->
+<!--    }-->
+<!--    .btn-card:hover .btn-arrow {-->
+<!--      background: rgba(255,255,255,.3);-->
+<!--      transform: translateX(3px);-->
+<!--    }-->
+
+<!--    /* accent stripe at bottom */-->
+<!--    .btn-card::after {-->
+<!--      content: '';-->
+<!--      position: absolute;-->
+<!--      bottom: 0; left: 0; right: 0;-->
+<!--      height: 4px;-->
+<!--      border-radius: 0 0 18px 18px;-->
+<!--    }-->
+<!--    .bishkek::after { background: #4a90d9; }-->
+<!--    .food::after    { background: #e74c3c; }-->
+<!--    .history::after { background: var(&#45;&#45;sun); }-->
+<!--    .guide::after   { background: #2ecc71; }-->
+<!--    .nature::after  { background: #27ae60; }-->
+<!--    .places::after  { background: #9b59b6; }-->
+
+<!--    /* ── FOOTER ── */-->
+<!--    footer {-->
+<!--      background: var(&#45;&#45;deep);-->
+<!--      color: rgba(255,255,255,.3);-->
+<!--      text-align: center;-->
+<!--      padding: 2.5rem 1rem;-->
+<!--      font-size: .8rem; letter-spacing: .05em;-->
+<!--    }-->
+<!--    footer span { color: var(&#45;&#45;sun); }-->
+
+<!--    @media (max-width: 768px) {-->
+<!--      nav { padding: 1rem 1.2rem; }-->
+<!--      .cards-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }-->
+<!--      .btn-card { padding: 1.8rem 1.3rem 1.6rem; }-->
+<!--      .btn-icon { font-size: 2.2rem; }-->
+<!--      .btn-title { font-size: .85rem; }-->
+<!--    }-->
+<!--    @media (max-width: 480px) {-->
+<!--      .cards-grid { grid-template-columns: 1fr 1fr; gap: .8rem; }-->
+<!--      .symbols { gap: 1.2rem; }-->
+<!--      .flag { width: 68px; height: 45px; }-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash; NAV &ndash;&gt;-->
+<!--<nav>-->
+<!--  <div class="logo">Explore <em>KG</em></div>-->
+<!--  <div class="nav-flag">🇰🇬</div>-->
+<!--</nav>-->
+
+<!--&lt;!&ndash; HERO &ndash;&gt;-->
+<!--<section class="hero">-->
+<!--  <div class="blob blob-red"></div>-->
+<!--  <div class="blob blob-gold"></div>-->
+<!--  <div class="blob blob-blue"></div>-->
+
+<!--  &lt;!&ndash; Tunduk &ndash;&gt;-->
+<!--  <svg class="tunduk-bg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--    <circle cx="100" cy="100" r="98" stroke="white" stroke-width="1.2"/>-->
+<!--    <circle cx="100" cy="100" r="72" stroke="white" stroke-width=".8"/>-->
+<!--    <circle cx="100" cy="100" r="44" stroke="white" stroke-width=".8"/>-->
+<!--    <circle cx="100" cy="100" r="18" stroke="white" stroke-width="1.2"/>-->
+<!--    <circle cx="100" cy="100" r="6" fill="white"/>-->
+<!--    <line x1="100" y1="2" x2="100" y2="198" stroke="white" stroke-width=".7"/>-->
+<!--    <line x1="2" y1="100" x2="198" y2="100" stroke="white" stroke-width=".7"/>-->
+<!--    <line x1="29" y1="29" x2="171" y2="171" stroke="white" stroke-width=".5"/>-->
+<!--    <line x1="171" y1="29" x2="29" y2="171" stroke="white" stroke-width=".5"/>-->
+<!--    <line x1="100" y1="2" x2="171" y2="171" stroke="white" stroke-width=".4"/>-->
+<!--    <line x1="100" y1="2" x2="29" y2="171" stroke="white" stroke-width=".4"/>-->
+<!--    <line x1="2" y1="100" x2="171" y2="29" stroke="white" stroke-width=".4"/>-->
+<!--    <line x1="2" y1="100" x2="171" y2="171" stroke="white" stroke-width=".4"/>-->
+<!--    <line x1="198" y1="100" x2="29" y2="29" stroke="white" stroke-width=".4"/>-->
+<!--    <line x1="198" y1="100" x2="29" y2="171" stroke="white" stroke-width=".4"/>-->
+<!--[14.06.2026 20:40] А: <line x1="100" y1="198" x2="29" y2="29" stroke="white" stroke-width=".4"/>-->
+<!--    <line x1="100" y1="198" x2="171" y2="29" stroke="white" stroke-width=".4"/>-->
+<!--  </svg>-->
+
+<!--  &lt;!&ndash; Mountains &ndash;&gt;-->
+<!--  <svg class="mountains" viewBox="0 0 1440 180" preserveAspectRatio="none">-->
+<!--    <polygon points="0,180 100,70 220,130 380,25 540,95 700,8 860,75 1020,15 1180,85 1320,40 1440,65 1440,180" fill="white"/>-->
+<!--  </svg>-->
+
+<!--  &lt;!&ndash; Flag + ornament + герб &ndash;&gt;-->
+<!--  <div class="symbols">-->
+<!--    &lt;!&ndash; KG Flag SVG &ndash;&gt;-->
+<!--    <div class="flag">-->
+<!--      <svg viewBox="0 0 88 58" width="88" height="58" xmlns="http://www.w3.org/2000/svg">-->
+<!--        <rect width="88" height="58" fill="#E8001D"/>-->
+<!--        <g transform="translate(44,29)">-->
+<!--          <circle r="20" fill="none" stroke="#FFD700" stroke-width="1.8"/>-->
+<!--          <circle r="6" fill="#FFD700"/>-->
+<!--          <g stroke="#FFD700" stroke-width="1.2">-->
+<!--            <line x1="0" y1="-6" x2="0" y2="-20"/>-->
+<!--            <line x1="0" y1="6" x2="0" y2="20"/>-->
+<!--            <line x1="-6" y1="0" x2="-20" y2="0"/>-->
+<!--            <line x1="6" y1="0" x2="20" y2="0"/>-->
+<!--          </g>-->
+<!--          <g stroke="#FFD700" stroke-width=".9">-->
+<!--            <line x1="-4.2" y1="-4.2" x2="-14.1" y2="-14.1"/>-->
+<!--            <line x1="4.2" y1="-4.2" x2="14.1" y2="-14.1"/>-->
+<!--            <line x1="-4.2" y1="4.2" x2="-14.1" y2="14.1"/>-->
+<!--            <line x1="4.2" y1="4.2" x2="14.1" y2="14.1"/>-->
+<!--            <line x1="-2.3" y1="-5.4" x2="-7.7" y2="-18.5"/>-->
+<!--            <line x1="2.3" y1="-5.4" x2="7.7" y2="-18.5"/>-->
+<!--            <line x1="-5.4" y1="-2.3" x2="-18.5" y2="-7.7"/>-->
+<!--            <line x1="-5.4" y1="2.3" x2="-18.5" y2="7.7"/>-->
+<!--            <line x1="5.4" y1="-2.3" x2="18.5" y2="-7.7"/>-->
+<!--            <line x1="5.4" y1="2.3" x2="18.5" y2="7.7"/>-->
+<!--            <line x1="-2.3" y1="5.4" x2="-7.7" y2="18.5"/>-->
+<!--            <line x1="2.3" y1="5.4" x2="7.7" y2="18.5"/>-->
+<!--          </g>-->
+<!--        </g>-->
+<!--      </svg>-->
+<!--    </div>-->
+
+<!--    <div class="orn">-->
+<!--      <div class="orn-line l"></div>-->
+<!--      <div class="orn-diamond"></div>-->
+<!--      <div class="orn-line r"></div>-->
+<!--    </div>-->
+
+<!--    <div class="coa">🦅</div>-->
+<!--  </div>-->
+
+<!--  <div class="hero-label">🇰🇬 Туристический гид · Кыргызстан</div>-->
+
+<!--  <h1>Добро пожаловать<br/>в <span class="r">Кыргыз</span><span class="g">стан</span></h1>-->
+
+<!--  <p class="hero-sub">-->
+<!--    Страна гор, орлов и кочевой свободы.<br/>-->
+<!--    Всё что нужно туристу — в одном месте.-->
+<!--  </p>-->
+
+<!--  <div class="scroll-hint">-->
+<!--    Листай вниз-->
+<!--    <span>↓</span>-->
+<!--  </div>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; CARDS &ndash;&gt;-->
+<!--<section class="cards-section" id="sections">-->
+<!--  <div class="cards-header">-->
+<!--    <span class="eyebrow">Выбери раздел</span>-->
+<!--    <h2>Что тебя интересует?</h2>-->
+<!--    <p>Нажми на карточку — и найди всё что нужно</p>-->
+<!--  </div>-->
+
+<!--  <div class="cards-grid">-->
+
+<!--    <a href="/bishkek/" class="btn-card bishkek">-->
+<!--      <span class="btn-icon">🏙️</span>-->
+<!--      <div class="btn-title">Бишкек</div>-->
+<!--      <div class="btn-desc">Столица: что посмотреть, где поесть, куда сходить</div>-->
+<!--      <div class="btn-arrow">→</div>-->
+<!--    </a>-->
+
+<!--    <a href="/food/" class="btn-card food">-->
+<!--      <span class="btn-icon">🍖</span>-->
+<!--      <div class="btn-title">Кухня</div>-->
+<!--      <div class="btn-desc">Манты, бешбармак, куурдак — попробовать обязательно</div>-->
+<!--      <div class="btn-arrow">→</div>-->
+<!--    </a>-->
+
+<!--    <a href="/history/" class="btn-card history">-->
+<!--      <span class="btn-icon">📜</span>-->
+<!--      <div class="btn-title">История</div>-->
+<!--      <div class="btn-desc">От кочевников до независимости — тысячи лет истории</div>-->
+<!--      <div class="btn-arrow">→</div>-->
+<!--    </a>-->
+
+<!--    <a href="/guide/" class="btn-card guide">-->
+<!--      <span class="btn-icon">🧭</span>-->
+<!--      <div class="btn-title">Гид</div>-->
+<!--      <div class="btn-desc">Транспорт, сим-карты, банки, приложения, номера</div>-->
+<!--      <div class="btn-arrow">→</div>-->
+<!--    </a>-->
+
+<!--    <a href="/nature/" class="btn-card nature">-->
+<!--      <span class="btn-icon">🏔️</span>-->
+<!--      <div class="btn-title">Природа</div>-->
+<!--      <div class="btn-desc">Иссык-Куль, Ала-Арча, горные маршруты и трекинг</div>-->
+<!--      <div class="btn-arrow">→</div>-->
+<!--    </a>-->
+
+<!--    <a href="/places/" class="btn-card places">-->
+<!--      <span class="btn-icon">📍</span>-->
+<!--[14.06.2026 20:40] А: <div class="btn-title">Места</div>-->
+<!--      <div class="btn-desc">Достопримечательности и лучшие точки страны</div>-->
+<!--      <div class="btn-arrow">→</div>-->
+<!--    </a>-->
+
+<!--  </div>-->
+<!--</section>-->
+
+<!--<footer>-->
+<!--  © 2026 <span>Explore KG</span> · Путеводитель по Кыргызстану 🇰🇬-->
+<!--</footer>-->
+
+<!--</body>-->
+<!--</html>-->
