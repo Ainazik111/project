@@ -1,3 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
+from django.contrib import admin
+from .models import Food, Drink
+
+@admin.register(Food)
+class FoodAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+@admin.register(Drink)
+class DrinkAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+

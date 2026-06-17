@@ -24,4 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('bishkek/', include('bishkek.urls')),
+    path('history/', include('history.urls')),  # добавляем историю
+    path('food/', include('food.urls')),
+    path('guide/', include('guide.urls')),
+    path('nature/', include('nature.urls')),
+    path('places/', include('places.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

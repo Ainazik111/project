@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from .models import Nature
 
-# Create your views here.
+def nature_page(request):
+    items = Nature.objects.all()
+    return render(request, 'nature/nature.html', {'items': items})
+

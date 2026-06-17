@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import Nature
 
-# Register your models here.
+@admin.register(Nature)
+class NatureAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+
