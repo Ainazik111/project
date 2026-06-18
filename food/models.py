@@ -1,12 +1,24 @@
 from django.db import models
 
+from django.db import models
+
 class Food(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Название блюда")
+    CATEGORY_CHOICES = [
+        ('main', 'Основные блюда'),
+        ('flour', 'Мучное'),
+        ('delicacy', 'Деликатесы'),
+        ('dessert', 'Лакомства'),
+        ('drink', 'Напитки'),
+    ]
+
+    name = models.CharField(max_length=100, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
-    image = models.ImageField(upload_to='food/dishes/', verbose_name="Фото блюда", blank=True, null=True)
+    image = models.ImageField(upload_to='food/photos/', verbose_name="Фото", blank=True, null=True)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, verbose_name="Категория")
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.get_category_display()})"
+
 
 
 class Drink(models.Model):

@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from .models import Nature
+from .models import NatureArticle
 
 def nature_page(request):
-    items = Nature.objects.all()
-    return render(request, 'nature/nature.html', {'items': items})
-
+    articles = NatureArticle.objects.all()
+    return render(request, 'nature/nature.html', {'articles': articles})

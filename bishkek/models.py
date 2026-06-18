@@ -1,5 +1,14 @@
 from django.db import models
 
+class BishkekIntro(models.Model):
+    title = models.CharField(max_length=200, verbose_name="Заголовок")
+    description = models.TextField(verbose_name="Описание")
+    image = models.ImageField(upload_to='bishkek/photos/', verbose_name="Фото", blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+
 class Place(models.Model):
     CATEGORY_CHOICES = [
         ('park', 'Парк'),

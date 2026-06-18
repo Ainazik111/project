@@ -1,8 +1,12 @@
 from django.contrib import admin
-from .models import Nature
+from .models import NatureArticle, NatureContent
 
-@admin.register(Nature)
-class NatureAdmin(admin.ModelAdmin):
+class NatureContentInline(admin.TabularInline):
+    model = NatureContent
+    extra = 1
+
+@admin.register(NatureArticle)
+class NatureArticleAdmin(admin.ModelAdmin):
     list_display = ('title',)
-    search_fields = ('title',)
+    inlines = [NatureContentInline]
 

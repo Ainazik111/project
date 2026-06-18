@@ -5,8 +5,9 @@ from .models import Food, Drink
 
 @admin.register(Food)
 class FoodAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'category')
     search_fields = ('name',)
+    list_filter = ('category',)
 
 @admin.register(Drink)
 class DrinkAdmin(admin.ModelAdmin):

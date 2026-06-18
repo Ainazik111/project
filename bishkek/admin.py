@@ -1,5 +1,10 @@
 from django.contrib import admin
 from .models import Place
+from .models import BishkekIntro
+
+@admin.register(BishkekIntro)
+class BishkekIntroAdmin(admin.ModelAdmin):
+    list_display = ('title',)
 
 
 admin.site.register(Place)

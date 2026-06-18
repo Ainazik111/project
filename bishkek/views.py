@@ -1,6 +1,10 @@
-from urllib import request
 from django.shortcuts import render
+from .models import BishkekIntro, Place
 
-# Create your views here.
-def bishkek():
-    return render(request, 'bishkek/index.html')
+def bishkek_intro(request):
+    intro = BishkekIntro.objects.all()
+    return render(request, 'bishkek/intro.html', {'intro': intro})
+
+def bishkek(request):
+    places = Place.objects.all()
+    return render(request, 'bishkek/places.html', {'places': places})
