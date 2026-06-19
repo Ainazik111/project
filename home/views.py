@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import HomeInfo, Population, Language, People, NationalGame, MusicalInstrument
+from .models import HomeInfo, Population, Language, People, NationalGame
 
 def home_page(request):
     info = HomeInfo.objects.all()
@@ -7,14 +7,12 @@ def home_page(request):
     languages = Language.objects.all()
     people = People.objects.all()
     games = NationalGame.objects.all()
-    instruments = MusicalInstrument.objects.all()
 
-    return render(request, 'home/home.html', {
+    return render(request, 'home/index.html', {
         'info': info,
         'population': population,
         'languages': languages,
         'people': people,
         'games': games,
-        'instruments': instruments
     })
 
