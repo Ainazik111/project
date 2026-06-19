@@ -28,7 +28,7 @@ class Place(models.Model):
     description = models.TextField('Описание')
     image = models.ImageField(
         'Фотография',
-        upload_to="media",
+        upload_to="",
         blank=True,
         null=True
     )

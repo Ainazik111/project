@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Кыргызская кухня — Кыргызстан{% endblock %}
+{% block content %}
+<section class="page-header">
+    <h1>Кыргызская кухня</h1>
+    <p>Национальные блюда и напитки</p>
+</section>
+
+<h2>Блюда</h2>
+<div class="card-grid">
+    {% for food in foods %}
+    <div class="card">
+        {% if food.image %}
+            <img src="{{ food.image.url }}" alt="{{ food.name }}">
+        {% endif %}
+        <h3>{{ food.name }}</h3>
+        <p class="category-badge">{{ food.get_category_display }}</p>
+        <p>{{ food.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<h2>Напитки</h2>
+<div class="card-grid">
+    {% for drink in drinks %}
+    <div class="card">
+        {% if drink.image %}
+            <img src="{{ drink.image.url }}" alt="{{ drink.name }}">
+        {% endif %}
+        <h3>{{ drink.name }}</h3>
+        <p>{{ drink.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

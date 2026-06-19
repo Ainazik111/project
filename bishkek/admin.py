@@ -7,7 +7,6 @@ class BishkekIntroAdmin(admin.ModelAdmin):
     list_display = ('title',)
 
 
-admin.site.register(Place)
 class PlaceAdmin(admin.ModelAdmin):
     list_display = (
         'title',
@@ -23,3 +22,5 @@ class PlaceAdmin(admin.ModelAdmin):
     list_filter = (
         'category',
     )
+
+admin.site.register(Place, PlaceAdmin)

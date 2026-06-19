@@ -29,7 +29,7 @@ class People(models.Model):
     description = models.TextField(verbose_name="Описание о народе")
 
     def __str__(self):
-        return "Описание о народе"
+        return self.description[:50] if self.description else "Описание о народе"
 
 
 class NationalGame(models.Model):

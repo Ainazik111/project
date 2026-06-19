@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Места — Кыргызстан{% endblock %}
+{% block content %}
+<section class="page-header">
+    <h1>Достопримечательности Кыргызстана</h1>
+</section>
+
+<div class="card-grid">
+    {% for place in places %}
+    <div class="card">
+        {% if place.image %}
+            <img src="{{ place.image.url }}" alt="{{ place.name }}">
+        {% endif %}
+        <h3>{{ place.name }}</h3>
+        <p class="category-badge">{{ place.get_category_display }}</p>
+        <p><strong>Регион:</strong> {{ place.region }}</p>
+        <p>{{ place.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

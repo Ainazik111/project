@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Гид — Кыргызстан{% endblock %}
+{% block content %}
+<section class="page-header">
+    <h1>Гид по Кыргызстану</h1>
+</section>
+
+<h2>Полезные приложения</h2>
+<div class="card-grid">
+    {% for app in apps %}
+    <div class="card">
+        {% if app.image %}
+            <img src="{{ app.image.url }}" alt="{{ app.name }}">
+        {% endif %}
+        <h3>{{ app.name }}</h3>
+        <p>{{ app.description }}</p>
+        {% if app.playmarket_link %}
+            <a href="{{ app.playmarket_link }}" target="_blank">Google Play</a>
+        {% endif %}
+        {% if app.appstore_link %}
+            <a href="{{ app.appstore_link }}" target="_blank">App Store</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<h2>Instagram-аккаунты</h2>
+<div class="card-grid">
+    {% for acc in instagrams %}
+    <div class="card">
+        <h3>{{ acc.username }}</h3>
+        <p>{{ acc.description }}</p>
+        <a href="{{ acc.link }}" target="_blank">Открыть Instagram</a>
+    </div>
+    {% endfor %}
+</div>
+
+<h2>Сервисы</h2>
+<div class="card-grid">
+    {% for service in services %}
+    <div class="card">
+        <h3>{{ service.name }}</h3>
+        <p>{{ service.description }}</p>
+        {% if service.link %}
+            <a href="{{ service.link }}" target="_blank">Перейти</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<h2>Экстренные контакты</h2>
+<div class="card-grid">
+    {% for contact in contacts %}
+    <div class="card contact-card">
+        <h3>{{ contact.name }}</h3>
+        <p>{{ contact.phone }}</p>
+        <p>{{ contact.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<h2>Советы путешественникам</h2>
+<div class="card-grid">
+    {% for tip in tips %}
+    <div class="card">
+        <h3>{{ tip.title }}</h3>
+        <p>{{ tip.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

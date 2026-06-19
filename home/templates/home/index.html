@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Главная — Кыргызстан{% endblock %}
+{% block content %}
+<section class="hero">
+    <h1>Добро пожаловать в Кыргызстан</h1>
+    <p>Страна небесных гор и древних традиций</p>
+</section>
+
+{% if info %}
+    {% for item in info %}
+    <section class="info-section">
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.description }}</p>
+        {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.title }}">
+        {% endif %}
+    </section>
+    {% endfor %}
+{% endif %}
+
+<div class="stats-grid">
+    {% if population %}
+        {% for item in population %}
+        <div class="stat-card">
+            <h3>{{ item.number }}</h3>
+            <p>{{ item.description }}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="card-grid">
+    {% if games %}
+        {% for game in games %}
+        <div class="card">
+            <h3>{{ game.name }}</h3>
+            <p>{{ game.description }}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% if instruments %}
+    <h2 class="section-title">Музыкальные инструменты</h2>
+    <div class="card-grid">
+        {% for instrument in instruments %}
+        <div class="card">
+            <h3>{{ instrument.name }}</h3>
+            <p>{{ instrument.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if languages %}
+<section class="info-section">
+    <h2>Языки</h2>
+    {% for lang in languages %}
+        <p><strong>{{ lang.name }}:</strong> {{ lang.description }}</p>
+    {% endfor %}
+</section>
+{% endif %}
+
+{% if people %}
+<section class="info-section">
+    <h2>О народе</h2>
+    {% for p in people %}
+        <p>{{ p.description }}</p>
+    {% endfor %}
+</section>
+{% endif %}
+{% endblock %}

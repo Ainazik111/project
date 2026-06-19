@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Epoch, Event, Culture
+from .models import Epoch, Event, Culture, CultureImage
 
 @admin.register(Epoch)
 class EpochAdmin(admin.ModelAdmin):
@@ -15,4 +15,9 @@ class EventAdmin(admin.ModelAdmin):
 class CultureAdmin(admin.ModelAdmin):
     list_display = ('category', 'name')
     search_fields = ('category', 'name')
+
+@admin.register(CultureImage)
+class CultureImageAdmin(admin.ModelAdmin):
+    list_display = ('culture',)
+    search_fields = ('culture__name',)
 

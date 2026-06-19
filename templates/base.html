@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Кыргызстан{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'home/stile.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">Кыргызстан</a>
+            <ul class="nav-links">
+                <li><a href="/">Главная</a></li>
+                <li><a href="/bishkek/">Бишкек</a></li>
+                <li><a href="/history/">История</a></li>
+                <li><a href="/food/">Кухня</a></li>
+                <li><a href="/nature/">Природа</a></li>
+                <li><a href="/places/">Места</a></li>
+                <li><a href="/guide/">Гид</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Кыргызстан. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

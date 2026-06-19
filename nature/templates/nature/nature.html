@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Природа — Кыргызстан{% endblock %}
+{% block content %}
+<section class="page-header">
+    <h1>Природа Кыргызстана</h1>
+    <p>Небесные горы и живописные долины</p>
+</section>
+
+{% for article in articles %}
+<section class="nature-article">
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.main_description }}</p>
+    {% for content in article.contents.all %}
+    <div class="nature-content">
+        {% if content.image %}
+            <img src="{{ content.image.url }}" alt="{{ article.title }}">
+        {% endif %}
+        {% if content.text %}
+            <p>{{ content.text }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</section>
+{% endfor %}
+{% endblock %}

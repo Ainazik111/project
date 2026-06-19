@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}История — Кыргызстан{% endblock %}
+{% block content %}
+<section class="page-header">
+    <h1>История Кыргызстана</h1>
+</section>
+
+<h2>Эпохи</h2>
+<div class="card-grid">
+    {% for epoch in epochs %}
+    <div class="card">
+        {% if epoch.image %}
+            <img src="{{ epoch.image.url }}" alt="{{ epoch.name }}">
+        {% endif %}
+        <h3>{{ epoch.name }}</h3>
+        <p>{{ epoch.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<h2>События</h2>
+<div class="card-grid">
+    {% for event in events %}
+    <div class="card">
+        {% if event.image %}
+            <img src="{{ event.image.url }}" alt="{{ event.title }}">
+        {% endif %}
+        <h3>{{ event.title }}</h3>
+        <p class="year-badge">{{ event.year }}</p>
+        <p>{{ event.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<h2>Культура</h2>
+<div class="card-grid">
+    {% for culture in cultures %}
+    <div class="card">
+        {% if culture.image %}
+            <img src="{{ culture.image.url }}" alt="{{ culture.name }}">
+        {% endif %}
+        <h3>{{ culture.name }}</h3>
+        <p class="category-badge">{{ culture.category }}</p>
+        <p>{{ culture.description }}</p>
+        {% if culture.youtube_link %}
+            <a href="{{ culture.youtube_link }}" target="_blank">Смотреть на YouTube</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
