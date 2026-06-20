@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Бишкек — Столица Кыргызстана{% endblock %}
+
+{% block hero %}
+<div class="hero" style="height: 50vh;">
+  <div class="hero__bg" style="background-color: #3d3426;"></div>
+  <div class="hero__content">
+    <h1 class="hero__title">Бишкек</h1>
+    <p class="hero__subtitle">Столица Кыргызстана — город зелёных бульваров и гор</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="section">
+  {% for item in intro %}
+  <div style="max-width: 800px; margin: 0 auto 40px; text-align: center;">
+    {% if item.image %}
+    <img src="{{ item.image.url }}" alt="{{ item.title }}" class="card__img" style="height: 350px; width: 100%; margin-bottom: 16px;">
+    {% endif %}
+    <h2 class="section__title">{{ item.title }}</h2>
+    <p style="color: #7a6e5d; margin-top: 12px;">{{ item.description }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+<div style="text-align: center; padding-bottom: 48px;">
+  <a href="{% url 'bishkek' %}" style="display: inline-block; padding: 14px 32px; background: var(--accent-dark); color: #fff; text-decoration: none; font-weight: 600; border-radius: 4px;">Смотреть места Бишкека &rarr;</a>
+</div>
+{% endblock %}

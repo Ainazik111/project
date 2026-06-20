@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Kyrgyzstan Travel{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar__inner">
+    <a href="{% url 'home' %}" class="navbar__logo">Kyrgyzstan</a>
+    <button class="navbar__burger" onclick="document.querySelector('.navbar__links').classList.toggle('open')">&#9776;</button>
+    <ul class="navbar__links">
+      <li><a href="{% url 'home' %}">Главная</a></li>
+      <li><a href="{% url 'bishkek_intro' %}">Бишкек</a></li>
+      <li><a href="{% url 'history' %}">История</a></li>
+      <li><a href="{% url 'food' %}">Кухня</a></li>
+      <li><a href="{% url 'nature' %}">Природа</a></li>
+      <li><a href="{% url 'places' %}">Места</a></li>
+      <li><a href="{% url 'guide' %}">Гид</a></li>
+    </ul>
+  </div>
+</nav>
+
+{% block hero %}{% endblock %}
+
+{% block content %}{% endblock %}
+
+<footer class="footer">
+  <p>&copy; 2026 Kyrgyzstan Travel Guide</p>
+</footer>
+
+</body>
+</html>

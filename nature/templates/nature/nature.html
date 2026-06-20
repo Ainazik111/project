@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Природа Кыргызстана{% endblock %}
+
+{% block hero %}
+<div class="hero" style="height: 50vh;">
+  <div class="hero__bg" style="background-color: #3d3426;"></div>
+  <div class="hero__content">
+    <h1 class="hero__title">Природа</h1>
+    <p class="hero__subtitle">Горы, озёра и ущелья — нетронутая красота</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="section">
+  {% for article in articles %}
+  <div style="margin-bottom: 60px;">
+    <h2 class="section__title">{{ article.title }}</h2>
+    <div class="section__divider"></div>
+    <p style="max-width: 700px; margin: 0 auto 32px; text-align: center; color: var(--text-light);">{{ article.main_description }}</p>
+
+    {% if article.contents.all %}
+    <div class="cards">
+      {% for block in article.contents.all %}
+      <div class="card">
+        <div class="card__tape"></div>
+        {% if block.image %}
+        <img src="{{ block.image.url }}" alt="{{ article.title }}" class="card__img">
+        {% endif %}
+        {% if block.text %}
+        <div class="card__body">
+          <p class="card__text">{{ block.text }}</p>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% empty %}
+  <p style="text-align: center; color: var(--text-light);">Статьи о природе пока не добавлены</p>
+  {% endfor %}
+</div>
+{% endblock %}
