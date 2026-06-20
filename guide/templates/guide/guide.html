@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block title %}Гид по Кыргызстану{% endblock %}
+
+{% block hero %}
+<div class="hero" style="height: 50vh;">
+  <div class="hero__bg" style="background-color: #3d3426;"></div>
+  <div class="hero__content">
+    <h1 class="hero__title">Recommendation Plan</h1>
+    <p class="hero__subtitle">Полезные приложения, контакты и советы для путешественников</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+{% if apps %}
+<div class="section">
+  <h2 class="section__title">Полезные приложения</h2>
+  <div class="section__divider"></div>
+
+  <div class="cards">
+    {% for app in apps %}
+    <div class="card">
+      <div class="card__tape"></div>
+      {% if app.image %}
+      <img src="{{ app.image.url }}" alt="{{ app.name }}" class="card__img" style="height: 160px; object-fit: contain; background: #f5f0e8; padding: 16px;">
+      {% endif %}
+      <div class="card__body">
+        <h3 class="card__title">{{ app.name }}</h3>
+        <p class="card__text">{{ app.description }}</p>
+        {% if app.playmarket_link %}
+        <a href="{{ app.playmarket_link }}" target="_blank" class="card__link">Play Market</a>
+        {% endif %}
+        {% if app.appstore_link %}
+        <a href="{{ app.appstore_link }}" target="_blank" class="card__link" style="margin-left: 12px;">App Store</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% if tips %}
+<div class="banner">
+  <h2 class="banner__title">Советы путешественникам</h2>
+</div>
+<div class="section">
+  <ul class="info-list">
+    {% for tip in tips %}
+    <li>
+      <strong>{{ tip.title }}</strong>
+      <br><span style="color: var(--text-light);">{{ tip.description }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% if contacts %}
+<div class="section">
+  <h2 class="section__title">Экстренные контакты</h2>
+  <div class="section__divider"></div>
+
+  <div class="chips">
+    {% for contact in contacts %}
+    <div class="chip">
+      <span class="chip__icon">🚨</span>
+      <div>
+        <strong>{{ contact.name }}</strong><br>
+        <span style="color: var(--accent-dark); font-weight: 600;">{{ contact.phone }}</span>
+        {% if contact.description %}<br><small style="color: var(--text-light);">{{ contact.description }}</small>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% if instagrams %}
+<div class="section">
+  <h2 class="section__title">Instagram</h2>
+  <div class="section__divider"></div>
+
+  <div class="chips">
+    {% for ig in instagrams %}
+    <a href="{{ ig.link }}" target="_blank" class="chip" style="text-decoration: none; color: var(--text);">
+      <span class="chip__icon">📸</span>
+      <div>
+        <strong>@{{ ig.username }}</strong>
+        {% if ig.description %}<br><small style="color: var(--text-light);">{{ ig.description }}</small>{% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% if services %}
+<div class="section">
+  <h2 class="section__title">Полезные сервисы</h2>
+  <div class="section__divider"></div>
+
+  <ul class="info-list">
+    {% for service in services %}
+    <li>
+      <strong>{{ service.name }}</strong>
+      {% if service.link %} — <a href="{{ service.link }}" target="_blank" style="color: var(--accent-dark);">Перейти</a>{% endif %}
+      <br><span style="color: var(--text-light);">{{ service.description }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+{% endblock %}

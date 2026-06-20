@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Места Бишкека{% endblock %}
+
+{% block content %}
+<div class="section">
+  <h2 class="section__title">Места Бишкека</h2>
+  <p class="section__subtitle">Парки, музеи, базары и рестораны столицы</p>
+  <div class="section__divider"></div>
+
+  <div class="cards">
+    {% for place in places %}
+    <div class="card">
+      <div class="card__tape"></div>
+      {% if place.image %}
+      <img src="{{ place.image.url }}" alt="{{ place.title }}" class="card__img">
+      {% endif %}
+      <div class="card__body">
+        <span class="card__category">{{ place.get_category_display }}</span>
+        <h3 class="card__title">{{ place.title }}</h3>
+        <p class="card__text">{{ place.description|truncatewords:30 }}</p>
+        {% if place.address %}
+        <p class="card__meta">📍 {{ place.address }}</p>
+        {% endif %}
+        {% if place.google_maps %}
+        <a href="{{ place.google_maps }}" target="_blank" class="card__link">Открыть на карте &rarr;</a>
+        {% endif %}
+        {% if place.website %}
+        <a href="{{ place.website }}" target="_blank" class="card__link" style="margin-left: 12px;">Сайт &rarr;</a>
+        {% endif %}
+      </div>
+    </div>
+    {% empty %}
+    <p style="text-align: center; color: var(--text-light);">Места пока не добавлены</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
