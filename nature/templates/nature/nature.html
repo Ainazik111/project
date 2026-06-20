@@ -3,43 +3,39 @@
 {% block title %}Природа Кыргызстана{% endblock %}
 
 {% block hero %}
-<div class="hero" style="height: 50vh;">
-  <div class="hero__bg" style="background-color: #3d3426;"></div>
-  <div class="hero__content">
+<div class="hero hero--short">
+  <div class="hero__bg" style="background-color: #2C2418;"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__body">
+    <div class="hero__chapter"><span class="hero__chapter-line"></span><span class="hero__chapter-text">Chapter 04</span></div>
     <h1 class="hero__title">Природа</h1>
-    <p class="hero__subtitle">Горы, озёра и ущелья — нетронутая красота</p>
+    <p class="hero__desc">Горы, озёра и ущелья — нетронутая красота Центральной Азии</p>
   </div>
 </div>
 {% endblock %}
 
 {% block content %}
+{% for article in articles %}
 <div class="section">
-  {% for article in articles %}
-  <div style="margin-bottom: 60px;">
+  <div class="section__header">
+    <div class="section__label">Природа</div>
     <h2 class="section__title">{{ article.title }}</h2>
+    <p class="section__sub">{{ article.main_description|truncatewords:30 }}</p>
     <div class="section__divider"></div>
-    <p style="max-width: 700px; margin: 0 auto 32px; text-align: center; color: var(--text-light);">{{ article.main_description }}</p>
-
-    {% if article.contents.all %}
-    <div class="cards">
-      {% for block in article.contents.all %}
-      <div class="card">
-        <div class="card__tape"></div>
-        {% if block.image %}
-        <img src="{{ block.image.url }}" alt="{{ article.title }}" class="card__img">
-        {% endif %}
-        {% if block.text %}
-        <div class="card__body">
-          <p class="card__text">{{ block.text }}</p>
-        </div>
-        {% endif %}
-      </div>
-      {% endfor %}
-    </div>
-    {% endif %}
   </div>
-  {% empty %}
-  <p style="text-align: center; color: var(--text-light);">Статьи о природе пока не добавлены</p>
-  {% endfor %}
+
+  {% if article.contents.all %}
+  <div class="grid grid--2">
+    {% for block in article.contents.all %}
+    <div class="card">
+      {% if block.image %}<div class="card__img-wrap"><img src="{{ block.image.url }}" alt="{{ article.title }}" class="card__img" style="height: 240px;"></div>{% endif %}
+      {% if block.text %}<div class="card__body"><p class="card__text">{{ block.text|truncatewords:35 }}</p></div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 </div>
+{% empty %}
+<div class="section"><div class="empty"><div class="empty__icon">🏔️</div><p>Статьи о природе скоро появятся</p></div></div>
+{% endfor %}
 {% endblock %}

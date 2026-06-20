@@ -4,35 +4,27 @@
 
 {% block content %}
 <div class="section">
-  <h2 class="section__title">Места Бишкека</h2>
-  <p class="section__subtitle">Парки, музеи, базары и рестораны столицы</p>
-  <div class="section__divider"></div>
-
-  <div class="cards">
+  <div class="section__header">
+    <div class="section__label">Бишкек</div>
+    <h2 class="section__title">Места столицы</h2>
+    <p class="section__sub">Парки, музеи, базары и рестораны</p>
+    <div class="section__divider"></div>
+  </div>
+  <div class="grid grid--3">
     {% for place in places %}
     <div class="card">
-      <div class="card__tape"></div>
-      {% if place.image %}
-      <img src="{{ place.image.url }}" alt="{{ place.title }}" class="card__img">
-      {% endif %}
+      {% if place.image %}<div class="card__img-wrap"><img src="{{ place.image.url }}" alt="{{ place.title }}" class="card__img"></div>{% endif %}
       <div class="card__body">
-        <span class="card__category">{{ place.get_category_display }}</span>
+        <span class="card__badge card__badge--gold">{{ place.get_category_display }}</span>
         <h3 class="card__title">{{ place.title }}</h3>
-        <p class="card__text">{{ place.description|truncatewords:30 }}</p>
-        {% if place.address %}
-        <p class="card__meta">📍 {{ place.address }}</p>
-        {% endif %}
-        {% if place.google_maps %}
-        <a href="{{ place.google_maps }}" target="_blank" class="card__link">Открыть на карте &rarr;</a>
-        {% endif %}
-        {% if place.website %}
-        <a href="{{ place.website }}" target="_blank" class="card__link" style="margin-left: 12px;">Сайт &rarr;</a>
-        {% endif %}
+        <p class="card__text">{{ place.description|truncatewords:25 }}</p>
+        <div class="card__footer">
+          {% if place.address %}<span>📍 {{ place.address|truncatewords:5 }}</span>{% endif %}
+          {% if place.google_maps %}<a href="{{ place.google_maps }}" target="_blank" class="card__link">Карта</a>{% endif %}
+        </div>
       </div>
     </div>
-    {% empty %}
-    <p style="text-align: center; color: var(--text-light);">Места пока не добавлены</p>
-    {% endfor %}
+    {% empty %}<div class="empty"><div class="empty__icon">📍</div><p>Места скоро появятся</p></div>{% endfor %}
   </div>
 </div>
 {% endblock %}

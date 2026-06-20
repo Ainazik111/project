@@ -3,11 +3,13 @@
 {% block title %}История Кыргызстана{% endblock %}
 
 {% block hero %}
-<div class="hero" style="height: 50vh;">
-  <div class="hero__bg" style="background-color: #3d3426;"></div>
-  <div class="hero__content">
-    <h1 class="hero__title">История и Культура</h1>
-    <p class="hero__subtitle">От древних кочевников до современности</p>
+<div class="hero hero--short">
+  <div class="hero__bg" style="background-color: #2C2418;"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__body">
+    <div class="hero__chapter"><span class="hero__chapter-line"></span><span class="hero__chapter-text">Chapter 03</span></div>
+    <h1 class="hero__title">История и культура</h1>
+    <p class="hero__desc">От древних кочевников до современности</p>
   </div>
 </div>
 {% endblock %}
@@ -15,19 +17,18 @@
 {% block content %}
 {% if epochs %}
 <div class="section">
-  <h2 class="section__title">Эпохи</h2>
-  <div class="section__divider"></div>
-
-  <div class="cards">
+  <div class="section__header">
+    <div class="section__label">Хронология</div>
+    <h2 class="section__title">Эпохи</h2>
+    <div class="section__divider"></div>
+  </div>
+  <div class="grid grid--2">
     {% for epoch in epochs %}
     <div class="card">
-      <div class="card__tape"></div>
-      {% if epoch.image %}
-      <img src="{{ epoch.image.url }}" alt="{{ epoch.name }}" class="card__img">
-      {% endif %}
+      {% if epoch.image %}<div class="card__img-wrap"><img src="{{ epoch.image.url }}" alt="{{ epoch.name }}" class="card__img"></div>{% endif %}
       <div class="card__body">
         <h3 class="card__title">{{ epoch.name }}</h3>
-        <p class="card__text">{{ epoch.description|truncatewords:40 }}</p>
+        <p class="card__text">{{ epoch.description|truncatewords:35 }}</p>
       </div>
     </div>
     {% endfor %}
@@ -36,15 +37,20 @@
 {% endif %}
 
 {% if events %}
-<div class="banner">
-  <h2 class="banner__title">Ключевые события</h2>
-</div>
 <div class="section">
-  <ul class="info-list">
+  <div class="section__header">
+    <div class="section__label">Даты</div>
+    <h2 class="section__title">Ключевые события</h2>
+    <div class="section__divider"></div>
+  </div>
+  <ul class="list list--center">
     {% for event in events %}
-    <li>
-      <strong>{% if event.year %}{{ event.year }} — {% endif %}{{ event.title }}</strong>
-      <br><span style="color: var(--text-light);">{{ event.description|truncatewords:30 }}</span>
+    <li class="list__item">
+      <div class="list__marker">{{ forloop.counter }}</div>
+      <div class="list__content">
+        <div class="list__title">{% if event.year %}{{ event.year }} — {% endif %}{{ event.title }}</div>
+        <div class="list__desc">{{ event.description|truncatewords:20 }}</div>
+      </div>
     </li>
     {% endfor %}
   </ul>
@@ -53,33 +59,24 @@
 
 {% if cultures %}
 <div class="section">
-  <h2 class="section__title">Культура</h2>
-  <div class="section__divider"></div>
-
-  <div class="cards">
+  <div class="section__header">
+    <div class="section__label">Наследие</div>
+    <h2 class="section__title">Культура</h2>
+    <div class="section__divider"></div>
+  </div>
+  <div class="grid grid--3">
     {% for item in cultures %}
     <div class="card">
-      <div class="card__tape"></div>
-      {% if item.image %}
-      <img src="{{ item.image.url }}" alt="{{ item.name }}" class="card__img">
-      {% endif %}
+      {% if item.image %}<div class="card__img-wrap"><img src="{{ item.image.url }}" alt="{{ item.name }}" class="card__img"></div>{% endif %}
       <div class="card__body">
-        <span class="card__category">{{ item.category }}</span>
+        <span class="card__badge card__badge--gold">{{ item.category }}</span>
         <h3 class="card__title">{{ item.name }}</h3>
-        <p class="card__text">{{ item.description }}</p>
-
-        {% if item.youtube_link %}
-        <a href="{{ item.youtube_link }}" target="_blank" class="card__link">🎬 Видео на YouTube</a>
-        {% endif %}
-
+        <p class="card__text">{{ item.description|truncatewords:20 }}</p>
+        {% if item.youtube_link %}<a href="{{ item.youtube_link }}" target="_blank" class="card__link">🎬 Видео</a>{% endif %}
         {% if item.audio %}
-        <div class="audio-block">
-          <audio controls preload="none">
-            <source src="{{ item.audio.url }}" type="audio/mpeg">
-          </audio>
-          {% if item.audio_text %}
-          <p>{{ item.audio_text }}</p>
-          {% endif %}
+        <div class="audio">
+          <audio controls preload="none"><source src="{{ item.audio.url }}" type="audio/mpeg"></audio>
+          {% if item.audio_text %}<p class="audio__text">{{ item.audio_text|truncatewords:15 }}</p>{% endif %}
         </div>
         {% endif %}
       </div>

@@ -8,7 +8,7 @@ def home_page(request):
     people = People.objects.all()
     games = NationalGame.objects.all()
 
-    return render(request, 'home/bishkek.html', {
+    return render(request, 'home/index.html', {
         'info': info,
         'population': population,
         'languages': languages,

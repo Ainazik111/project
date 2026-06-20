@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}Бишкек — Столица Кыргызстана{% endblock %}
+{% block title %}Бишкек{% endblock %}
 
 {% block hero %}
-<div class="hero" style="height: 50vh;">
-  <div class="hero__bg" style="background-color: #3d3426;"></div>
-  <div class="hero__content">
+<div class="hero hero--short">
+  <div class="hero__bg" style="background-color: #2C2418;"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__body">
+    <div class="hero__chapter"><span class="hero__chapter-line"></span><span class="hero__chapter-text">Chapter 01</span></div>
     <h1 class="hero__title">Бишкек</h1>
-    <p class="hero__subtitle">Столица Кыргызстана — город зелёных бульваров и гор</p>
+    <p class="hero__desc">Столица у подножия гор — зелёные бульвары, базары и современная культура</p>
   </div>
 </div>
 {% endblock %}
@@ -15,17 +17,26 @@
 {% block content %}
 <div class="section">
   {% for item in intro %}
-  <div style="max-width: 800px; margin: 0 auto 40px; text-align: center;">
-    {% if item.image %}
-    <img src="{{ item.image.url }}" alt="{{ item.title }}" class="card__img" style="height: 350px; width: 100%; margin-bottom: 16px;">
-    {% endif %}
-    <h2 class="section__title">{{ item.title }}</h2>
-    <p style="color: #7a6e5d; margin-top: 12px;">{{ item.description }}</p>
+  {% if forloop.first and item.image %}
+  <div class="featured">
+    <img src="{{ item.image.url }}" alt="{{ item.title }}" class="featured__img">
+    <div class="featured__body">
+      <h3 class="featured__title">{{ item.title }}</h3>
+      <p class="featured__text">{{ item.description|truncatewords:60 }}</p>
+    </div>
   </div>
+  {% else %}
+  <div class="info-block" style="margin-bottom: 16px;">
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px;">{{ item.title }}</h3>
+    <p>{{ item.description|truncatewords:50 }}</p>
+  </div>
+  {% endif %}
+  {% empty %}
+  <div class="empty"><div class="empty__icon">🏙️</div><p>Информация о Бишкеке скоро появится</p></div>
   {% endfor %}
 </div>
 
 <div style="text-align: center; padding-bottom: 48px;">
-  <a href="{% url 'bishkek' %}" style="display: inline-block; padding: 14px 32px; background: var(--accent-dark); color: #fff; text-decoration: none; font-weight: 600; border-radius: 4px;">Смотреть места Бишкека &rarr;</a>
+  <a href="{% url 'bishkek' %}" class="btn">Смотреть места Бишкека &rarr;</a>
 </div>
 {% endblock %}

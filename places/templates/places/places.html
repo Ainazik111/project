@@ -1,36 +1,33 @@
 {% extends 'base.html' %}
 
-{% block title %}Достопримечательности Кыргызстана{% endblock %}
+{% block title %}Достопримечательности{% endblock %}
 
 {% block hero %}
-<div class="hero" style="height: 50vh;">
-  <div class="hero__bg" style="background-color: #3d3426;"></div>
-  <div class="hero__content">
+<div class="hero hero--short">
+  <div class="hero__bg" style="background-color: #2C2418;"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__body">
+    <div class="hero__chapter"><span class="hero__chapter-line"></span><span class="hero__chapter-text">Chapter 05</span></div>
     <h1 class="hero__title">Places to Visit</h1>
-    <p class="hero__subtitle">Лучшие достопримечательности по всей стране</p>
+    <p class="hero__desc">Лучшие достопримечательности по всей стране</p>
   </div>
 </div>
 {% endblock %}
 
 {% block content %}
 <div class="section">
-  <div class="cards">
+  <div class="grid grid--3">
     {% for place in places %}
     <div class="card">
-      <div class="card__tape"></div>
-      {% if place.image %}
-      <img src="{{ place.image.url }}" alt="{{ place.name }}" class="card__img">
-      {% endif %}
+      {% if place.image %}<div class="card__img-wrap"><img src="{{ place.image.url }}" alt="{{ place.name }}" class="card__img"></div>{% endif %}
       <div class="card__body">
-        <span class="card__category">{{ place.get_category_display }}</span>
+        <span class="card__badge card__badge--sage">{{ place.get_category_display }}</span>
         <h3 class="card__title">{{ place.name }}</h3>
-        <p class="card__meta">📍 {{ place.region }}</p>
-        <p class="card__text">{{ place.description }}</p>
+        <p class="card__text" style="font-size: 0.8rem; color: var(--gold); margin-bottom: 6px;">📍 {{ place.region }}</p>
+        <p class="card__text">{{ place.description|truncatewords:25 }}</p>
       </div>
     </div>
-    {% empty %}
-    <p style="text-align: center; color: var(--text-light);">Места пока не добавлены</p>
-    {% endfor %}
+    {% empty %}<div class="empty"><div class="empty__icon">📍</div><p>Места скоро появятся</p></div>{% endfor %}
   </div>
 </div>
 {% endblock %}
