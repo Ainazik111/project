@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Кыргызская кухня{% endblock %}
+
+{% block hero %}
+<div class="hero" style="height: 50vh;">
+  <div class="hero__bg" style="background-color: #3d3426;"></div>
+  <div class="hero__content">
+    <h1 class="hero__title">Кыргызская кухня</h1>
+    <p class="hero__subtitle">Национальные блюда и напитки — вкус кочевой культуры</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="section">
+  <h2 class="section__title">Блюда</h2>
+  <div class="section__divider"></div>
+
+  <div class="cards">
+    {% for item in foods %}
+    <div class="card">
+      <div class="card__tape"></div>
+      {% if item.image %}
+      <img src="{{ item.image.url }}" alt="{{ item.name }}" class="card__img">
+      {% endif %}
+      <div class="card__body">
+        <span class="card__category">{{ item.get_category_display }}</span>
+        <h3 class="card__title">{{ item.name }}</h3>
+        <p class="card__text">{{ item.description }}</p>
+      </div>
+    </div>
+    {% empty %}
+    <p style="text-align: center; color: var(--text-light);">Блюда пока не добавлены</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% if drinks %}
+<div class="section">
+  <h2 class="section__title">Напитки</h2>
+  <div class="section__divider"></div>
+
+  <div class="cards">
+    {% for drink in drinks %}
+    <div class="card">
+      <div class="card__tape"></div>
+      {% if drink.image %}
+      <img src="{{ drink.image.url }}" alt="{{ drink.name }}" class="card__img">
+      {% endif %}
+      <div class="card__body">
+        <h3 class="card__title">{{ drink.name }}</h3>
+        <p class="card__text">{{ drink.description }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Достопримечательности Кыргызстана{% endblock %}
+
+{% block hero %}
+<div class="hero" style="height: 50vh;">
+  <div class="hero__bg" style="background-color: #3d3426;"></div>
+  <div class="hero__content">
+    <h1 class="hero__title">Places to Visit</h1>
+    <p class="hero__subtitle">Лучшие достопримечательности по всей стране</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="section">
+  <div class="cards">
+    {% for place in places %}
+    <div class="card">
+      <div class="card__tape"></div>
+      {% if place.image %}
+      <img src="{{ place.image.url }}" alt="{{ place.name }}" class="card__img">
+      {% endif %}
+      <div class="card__body">
+        <span class="card__category">{{ place.get_category_display }}</span>
+        <h3 class="card__title">{{ place.name }}</h3>
+        <p class="card__meta">📍 {{ place.region }}</p>
+        <p class="card__text">{{ place.description }}</p>
+      </div>
+    </div>
+    {% empty %}
+    <p style="text-align: center; color: var(--text-light);">Места пока не добавлены</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
