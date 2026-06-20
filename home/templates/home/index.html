@@ -1,109 +1,130 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Kyrgyzstan — Travel Plan{% endblock %}
+{% block title %}Kyrgyzstan Atlas{% endblock %}
 
 {% block hero %}
 <div class="hero">
-  <div class="hero__bg" style="background-color: #3d3426;"></div>
-  <div class="hero__content">
+  <div class="hero__bg" style="background-color: #2C2418;"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__body">
+    <div class="hero__chapter">
+      <span class="hero__chapter-line"></span>
+      <span class="hero__chapter-text">Travel Guide</span>
+    </div>
     <h1 class="hero__title">Kyrgyzstan</h1>
-    <p class="hero__subtitle">Откройте для себя жемчужину Центральной Азии — горы, культуру и гостеприимство</p>
+    <p class="hero__desc">Горы, которые касаются неба. Культура, которая живёт тысячи лет. Гостеприимство, которое невозможно забыть.</p>
   </div>
 </div>
 {% endblock %}
 
 {% block content %}
+
+{% if info %}
 <div class="section">
-  <h2 class="section__title">Destination Overview</h2>
-  <div class="section__divider"></div>
+  <div class="section__header">
+    <div class="section__label">О стране</div>
+    <h2 class="section__title">Добро пожаловать в Кыргызстан</h2>
+    <div class="section__divider"></div>
+  </div>
 
   {% for item in info %}
-  <div style="max-width: 800px; margin: 0 auto 32px; text-align: center;">
-    {% if item.image %}
-    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="width: 100%; max-height: 400px; object-fit: cover; filter: sepia(0.15); margin-bottom: 16px;">
-    {% endif %}
-    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 8px;">{{ item.title }}</h3>
-    <p style="color: #7a6e5d;">{{ item.description }}</p>
+  {% if forloop.first and item.image %}
+  <div class="featured">
+    <img src="{{ item.image.url }}" alt="{{ item.title }}" class="featured__img">
+    <div class="featured__body">
+      <h3 class="featured__title">{{ item.title }}</h3>
+      <p class="featured__text">{{ item.description|truncatewords:50 }}</p>
+    </div>
   </div>
+  {% elif not forloop.first %}
+  <div class="info-block" style="margin-bottom: 16px;">
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px;">{{ item.title }}</h3>
+    <p>{{ item.description|truncatewords:40 }}</p>
+  </div>
+  {% endif %}
   {% endfor %}
 </div>
+{% endif %}
 
 {% if population or languages %}
-<div class="banner">
-  <h2 class="banner__title">Highlights</h2>
-  <div style="max-width: 600px; margin: 20px auto 0;">
-    {% for p in population %}
-    <p style="margin-bottom: 8px;"><strong style="color: #b8943e;">Население:</strong> {{ p.number }}</p>
-    {% if p.description %}<p style="font-size: 0.9rem;">{{ p.description }}</p>{% endif %}
-    {% endfor %}
-    {% for lang in languages %}
-    <p style="margin-top: 8px;"><strong style="color: #b8943e;">{{ lang.name }}</strong>{% if lang.description %} — {{ lang.description }}{% endif %}</p>
-    {% endfor %}
+<div class="stats">
+  {% for p in population %}
+  <div class="stat">
+    <div class="stat__value">{{ p.number }}</div>
+    <div class="stat__label">Население</div>
   </div>
-</div>
-{% endif %}
-
-<div class="section">
-  <h2 class="section__title">Places to Visit</h2>
-  <p class="section__subtitle">Выберите раздел и начните путешествие</p>
-  <div class="section__divider"></div>
-
-  <div class="nav-cards">
-    <a href="{% url 'bishkek_intro' %}" class="nav-card">
-      <div class="nav-card__icon">🏙️</div>
-      <div class="nav-card__title">Бишкек</div>
-      <div class="nav-card__desc">Столица и её достопримечательности</div>
-    </a>
-    <a href="{% url 'history' %}" class="nav-card">
-      <div class="nav-card__icon">📜</div>
-      <div class="nav-card__title">История</div>
-      <div class="nav-card__desc">Эпохи, события и культура</div>
-    </a>
-    <a href="{% url 'food' %}" class="nav-card">
-      <div class="nav-card__icon">🍖</div>
-      <div class="nav-card__title">Кухня</div>
-      <div class="nav-card__desc">Национальные блюда и напитки</div>
-    </a>
-    <a href="{% url 'nature' %}" class="nav-card">
-      <div class="nav-card__icon">🏔️</div>
-      <div class="nav-card__title">Природа</div>
-      <div class="nav-card__desc">Горы, озёра, ущелья</div>
-    </a>
-    <a href="{% url 'places' %}" class="nav-card">
-      <div class="nav-card__icon">📍</div>
-      <div class="nav-card__title">Места</div>
-      <div class="nav-card__desc">Лучшие достопримечательности</div>
-    </a>
-    <a href="{% url 'guide' %}" class="nav-card">
-      <div class="nav-card__icon">📱</div>
-      <div class="nav-card__title">Гид</div>
-      <div class="nav-card__desc">Приложения, советы, контакты</div>
-    </a>
-  </div>
-</div>
-
-{% if people %}
-<div class="section">
-  <h2 class="section__title">О народе</h2>
-  <div class="section__divider"></div>
-  {% for p in people %}
-  <div style="max-width: 700px; margin: 0 auto; background: var(--bg-card); padding: 24px 32px; box-shadow: 0 4px 16px var(--shadow);">
-    <p>{{ p.description }}</p>
+  {% endfor %}
+  {% for lang in languages %}
+  <div class="stat">
+    <div class="stat__value">{{ lang.name }}</div>
+    <div class="stat__label">Язык</div>
   </div>
   {% endfor %}
 </div>
 {% endif %}
+
+<div class="section">
+  <div class="section__header">
+    <div class="section__label">Разделы</div>
+    <h2 class="section__title">Исследуйте</h2>
+    <p class="section__sub">Выберите направление и начните путешествие</p>
+    <div class="section__divider"></div>
+  </div>
+
+  <div class="nav-grid">
+    <a href="{% url 'bishkek_intro' %}" class="nav-tile">
+      <div class="nav-tile__icon">🏙️</div>
+      <div class="nav-tile__title">Бишкек</div>
+      <div class="nav-tile__desc">Столица и её места</div>
+    </a>
+    <a href="{% url 'history' %}" class="nav-tile">
+      <div class="nav-tile__icon">📜</div>
+      <div class="nav-tile__title">История</div>
+      <div class="nav-tile__desc">Эпохи и культура</div>
+    </a>
+    <a href="{% url 'food' %}" class="nav-tile">
+      <div class="nav-tile__icon">🍖</div>
+      <div class="nav-tile__title">Кухня</div>
+      <div class="nav-tile__desc">Блюда и напитки</div>
+    </a>
+    <a href="{% url 'nature' %}" class="nav-tile">
+      <div class="nav-tile__icon">🏔️</div>
+      <div class="nav-tile__title">Природа</div>
+      <div class="nav-tile__desc">Горы и озёра</div>
+    </a>
+    <a href="{% url 'places' %}" class="nav-tile">
+      <div class="nav-tile__icon">📍</div>
+      <div class="nav-tile__title">Места</div>
+      <div class="nav-tile__desc">Достопримечательности</div>
+    </a>
+    <a href="{% url 'guide' %}" class="nav-tile">
+      <div class="nav-tile__icon">📱</div>
+      <div class="nav-tile__title">Гид</div>
+      <div class="nav-tile__desc">Советы и контакты</div>
+    </a>
+  </div>
+</div>
 
 {% if games %}
 <div class="section">
-  <h2 class="section__title">Национальные игры</h2>
-  <div class="section__divider"></div>
-  <ul class="info-list">
+  <div class="section__header">
+    <div class="section__label">Традиции</div>
+    <h2 class="section__title">Национальные игры</h2>
+    <div class="section__divider"></div>
+  </div>
+  <ul class="list list--center">
     {% for game in games %}
-    <li><strong>{{ game.name }}</strong>{% if game.description %} — {{ game.description }}{% endif %}</li>
+    <li class="list__item">
+      <div class="list__marker">{{ forloop.counter }}</div>
+      <div class="list__content">
+        <div class="list__title">{{ game.name }}</div>
+        {% if game.description %}<div class="list__desc">{{ game.description|truncatewords:25 }}</div>{% endif %}
+      </div>
+    </li>
     {% endfor %}
   </ul>
 </div>
 {% endif %}
+
 {% endblock %}

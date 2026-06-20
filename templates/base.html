@@ -4,33 +4,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Kyrgyzstan Travel{% endblock %}</title>
+  <title>{% block title %}Kyrgyzstan{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="navbar__inner">
-    <a href="{% url 'home' %}" class="navbar__logo">Kyrgyzstan</a>
-    <button class="navbar__burger" onclick="document.querySelector('.navbar__links').classList.toggle('open')">&#9776;</button>
-    <ul class="navbar__links">
-      <li><a href="{% url 'home' %}">Главная</a></li>
-      <li><a href="{% url 'bishkek_intro' %}">Бишкек</a></li>
-      <li><a href="{% url 'history' %}">История</a></li>
-      <li><a href="{% url 'food' %}">Кухня</a></li>
-      <li><a href="{% url 'nature' %}">Природа</a></li>
-      <li><a href="{% url 'places' %}">Места</a></li>
-      <li><a href="{% url 'guide' %}">Гид</a></li>
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="{% url 'home' %}" class="nav__logo">Kyrgyzstan <span>atlas</span></a>
+    <button class="nav__burger" onclick="this.nextElementSibling.classList.toggle('open')">&#9776;</button>
+    <ul class="nav__menu">
+      <li><a href="{% url 'home' %}" class="nav__link">Главная</a></li>
+      <li><a href="{% url 'bishkek_intro' %}" class="nav__link">Бишкек</a></li>
+      <li><a href="{% url 'history' %}" class="nav__link">История</a></li>
+      <li><a href="{% url 'food' %}" class="nav__link">Кухня</a></li>
+      <li><a href="{% url 'nature' %}" class="nav__link">Природа</a></li>
+      <li><a href="{% url 'places' %}" class="nav__link">Места</a></li>
+      <li><a href="{% url 'guide' %}" class="nav__link">Гид</a></li>
     </ul>
   </div>
 </nav>
 
 {% block hero %}{% endblock %}
 
-{% block content %}{% endblock %}
+<div class="page">
+  {% block content %}{% endblock %}
+</div>
 
 <footer class="footer">
-  <p>&copy; 2026 Kyrgyzstan Travel Guide</p>
+  <p class="footer__text">&copy; 2026 Kyrgyzstan Atlas &middot; Travel Guide</p>
 </footer>
 
 </body>
