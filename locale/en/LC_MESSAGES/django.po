@@ -1,0 +1,206 @@
+# English translation for Kyrgyzstan Atlas.
+# Copyright (C) 2026
+# Ratmir <ratmirkach2000@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Kyrgyzstan Atlas 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-21 18:30+0600\n"
+"PO-Revision-Date: 2026-06-21 18:30+0600\n"
+"Last-Translator: Ratmir <ratmirkach2000@gmail.com>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Главная"
+msgstr "Home"
+
+msgid "Бишкек"
+msgstr "Bishkek"
+
+msgid "История"
+msgstr "History"
+
+msgid "Кухня"
+msgstr "Cuisine"
+
+msgid "Природа"
+msgstr "Nature"
+
+msgid "Места"
+msgstr "Places"
+
+msgid "Гид"
+msgstr "Guide"
+
+msgid "Путеводитель"
+msgstr "Travel Guide"
+
+msgid "Горы, которые касаются неба. Культура, которая живёт тысячи лет. Гостеприимство, которое невозможно забыть."
+msgstr "Mountains that touch the sky. Culture that lives for thousands of years. Hospitality you will never forget."
+
+msgid "О стране"
+msgstr "About the Country"
+
+msgid "Добро пожаловать в Кыргызстан"
+msgstr "Welcome to Kyrgyzstan"
+
+msgid "Население"
+msgstr "Population"
+
+msgid "Язык"
+msgstr "Language"
+
+msgid "Разделы"
+msgstr "Sections"
+
+msgid "Исследуйте"
+msgstr "Explore"
+
+msgid "Выберите направление и начните путешествие"
+msgstr "Choose a destination and start your journey"
+
+msgid "Столица и её места"
+msgstr "Capital and its places"
+
+msgid "Эпохи и культура"
+msgstr "Epochs and culture"
+
+msgid "Блюда и напитки"
+msgstr "Dishes and drinks"
+
+msgid "Горы и озёра"
+msgstr "Mountains and lakes"
+
+msgid "Достопримечательности"
+msgstr "Sights"
+
+msgid "Советы и контакты"
+msgstr "Tips and contacts"
+
+msgid "Традиции"
+msgstr "Traditions"
+
+msgid "Национальные игры"
+msgstr "National Games"
+
+msgid "Столица у подножия гор — зелёные бульвары, базары и современная культура"
+msgstr "Capital at the foot of the mountains — green boulevards, bazaars and modern culture"
+
+msgid "Информация о Бишкеке скоро появится"
+msgstr "Information about Bishkek coming soon"
+
+msgid "Смотреть места Бишкека"
+msgstr "View Bishkek places"
+
+msgid "Места Бишкека"
+msgstr "Bishkek Places"
+
+msgid "Места столицы"
+msgstr "Capital Places"
+
+msgid "Парки, музеи, базары и рестораны"
+msgstr "Parks, museums, bazaars and restaurants"
+
+msgid "Карта"
+msgstr "Map"
+
+msgid "Места скоро появятся"
+msgstr "Places coming soon"
+
+msgid "Кыргызская кухня"
+msgstr "Kyrgyz Cuisine"
+
+msgid "Вкус кочевой культуры — от бешбармака до кумыса"
+msgstr "The taste of nomadic culture — from beshbarmak to kumys"
+
+msgid "Блюда"
+msgstr "Dishes"
+
+msgid "Национальная кухня"
+msgstr "National Cuisine"
+
+msgid "Блюда скоро появятся"
+msgstr "Dishes coming soon"
+
+msgid "Напитки"
+msgstr "Drinks"
+
+msgid "Традиционные напитки"
+msgstr "Traditional Drinks"
+
+msgid "Напиток"
+msgstr "Drink"
+
+msgid "Гид путешественника"
+msgstr "Traveler's Guide"
+
+msgid "Приложения, контакты и советы для комфортной поездки"
+msgstr "Apps, contacts and tips for a comfortable trip"
+
+msgid "Инструменты"
+msgstr "Tools"
+
+msgid "Полезные приложения"
+msgstr "Useful Apps"
+
+msgid "Рекомендации"
+msgstr "Recommendations"
+
+msgid "Советы путешественникам"
+msgstr "Travel Tips"
+
+msgid "Безопасность"
+msgstr "Safety"
+
+msgid "Экстренные контакты"
+msgstr "Emergency Contacts"
+
+msgid "Соцсети"
+msgstr "Social Media"
+
+msgid "История Кыргызстана"
+msgstr "History of Kyrgyzstan"
+
+msgid "История и культура"
+msgstr "History and Culture"
+
+msgid "От древних кочевников до современности"
+msgstr "From ancient nomads to modern times"
+
+msgid "Хронология"
+msgstr "Timeline"
+
+msgid "Эпохи"
+msgstr "Epochs"
+
+msgid "Даты"
+msgstr "Dates"
+
+msgid "Ключевые события"
+msgstr "Key Events"
+
+msgid "Наследие"
+msgstr "Heritage"
+
+msgid "Культура"
+msgstr "Culture"
+
+msgid "Видео"
+msgstr "Video"
+
+msgid "Природа Кыргызстана"
+msgstr "Nature of Kyrgyzstan"
+
+msgid "Горы, озёра и ущелья — нетронутая красота Центральной Азии"
+msgstr "Mountains, lakes and gorges — the untouched beauty of Central Asia"
+
+msgid "Статьи о природе скоро появятся"
+msgstr "Nature articles coming soon"
+
+msgid "Лучшие места по всей стране"
+msgstr "Best places across the country"

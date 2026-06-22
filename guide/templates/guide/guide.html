@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Гид{% endblock %}
+{% block title %}{% trans "Гид" %}{% endblock %}
 
 {% block hero %}
 <div class="hero hero--short">
@@ -8,8 +9,8 @@
   <div class="hero__overlay"></div>
   <div class="hero__body">
     <div class="hero__chapter"><span class="hero__chapter-line"></span><span class="hero__chapter-text">Chapter 06</span></div>
-    <h1 class="hero__title">Гид путешественника</h1>
-    <p class="hero__desc">Приложения, контакты и советы для комфортной поездки</p>
+    <h1 class="hero__title">{% trans "Гид путешественника" %}</h1>
+    <p class="hero__desc">{% trans "Приложения, контакты и советы для комфортной поездки" %}</p>
   </div>
 </div>
 {% endblock %}
@@ -18,8 +19,8 @@
 {% if apps %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Инструменты</div>
-    <h2 class="section__title">Полезные приложения</h2>
+    <div class="section__label">{% trans "Инструменты" %}</div>
+    <h2 class="section__title">{% trans "Полезные приложения" %}</h2>
     <div class="section__divider"></div>
   </div>
   <div class="grid grid--3">
@@ -43,8 +44,8 @@
 {% if tips %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Рекомендации</div>
-    <h2 class="section__title">Советы путешественникам</h2>
+    <div class="section__label">{% trans "Рекомендации" %}</div>
+    <h2 class="section__title">{% trans "Советы путешественникам" %}</h2>
     <div class="section__divider"></div>
   </div>
   <ul class="list list--center">
@@ -64,8 +65,8 @@
 {% if contacts %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Безопасность</div>
-    <h2 class="section__title">Экстренные контакты</h2>
+    <div class="section__label">{% trans "Безопасность" %}</div>
+    <h2 class="section__title">{% trans "Экстренные контакты" %}</h2>
     <div class="section__divider"></div>
   </div>
   <div class="chips">
@@ -86,7 +87,7 @@
 {% if instagrams %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Соцсети</div>
+    <div class="section__label">{% trans "Соцсети" %}</div>
     <h2 class="section__title">Instagram</h2>
     <div class="section__divider"></div>
   </div>

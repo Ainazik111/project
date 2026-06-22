@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Природа Кыргызстана{% endblock %}
+{% block title %}{% trans "Природа Кыргызстана" %}{% endblock %}
 
 {% block hero %}
 <div class="hero hero--short">
@@ -8,8 +9,8 @@
   <div class="hero__overlay"></div>
   <div class="hero__body">
     <div class="hero__chapter"><span class="hero__chapter-line"></span><span class="hero__chapter-text">Chapter 04</span></div>
-    <h1 class="hero__title">Природа</h1>
-    <p class="hero__desc">Горы, озёра и ущелья — нетронутая красота Центральной Азии</p>
+    <h1 class="hero__title">{% trans "Природа" %}</h1>
+    <p class="hero__desc">{% trans "Горы, озёра и ущелья — нетронутая красота Центральной Азии" %}</p>
   </div>
 </div>
 {% endblock %}
@@ -18,7 +19,7 @@
 {% for article in articles %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Природа</div>
+    <div class="section__label">{% trans "Природа" %}</div>
     <h2 class="section__title">{{ article.title }}</h2>
     <p class="section__sub">{{ article.main_description|truncatewords:30 }}</p>
     <div class="section__divider"></div>
@@ -36,6 +37,6 @@
   {% endif %}
 </div>
 {% empty %}
-<div class="section"><div class="empty"><div class="empty__icon">🏔️</div><p>Статьи о природе скоро появятся</p></div></div>
+<div class="section"><div class="empty"><div class="empty__icon">🏔️</div><p>{% trans "Статьи о природе скоро появятся" %}</p></div></div>
 {% endfor %}
 {% endblock %}

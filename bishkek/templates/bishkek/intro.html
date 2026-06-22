@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Бишкек{% endblock %}
+{% block title %}{% trans "Бишкек" %}{% endblock %}
 
 {% block hero %}
 <div class="hero hero--short">
@@ -8,8 +9,8 @@
   <div class="hero__overlay"></div>
   <div class="hero__body">
     <div class="hero__chapter"><span class="hero__chapter-line"></span><span class="hero__chapter-text">Chapter 01</span></div>
-    <h1 class="hero__title">Бишкек</h1>
-    <p class="hero__desc">Столица у подножия гор — зелёные бульвары, базары и современная культура</p>
+    <h1 class="hero__title">{% trans "Бишкек" %}</h1>
+    <p class="hero__desc">{% trans "Столица у подножия гор — зелёные бульвары, базары и современная культура" %}</p>
   </div>
 </div>
 {% endblock %}
@@ -32,11 +33,11 @@
   </div>
   {% endif %}
   {% empty %}
-  <div class="empty"><div class="empty__icon">🏙️</div><p>Информация о Бишкеке скоро появится</p></div>
+  <div class="empty"><div class="empty__icon">🏙️</div><p>{% trans "Информация о Бишкеке скоро появится" %}</p></div>
   {% endfor %}
 </div>
 
 <div style="text-align: center; padding-bottom: 48px;">
-  <a href="{% url 'bishkek' %}" class="btn">Смотреть места Бишкека &rarr;</a>
+  <a href="{% url 'bishkek' %}" class="btn">{% trans "Смотреть места Бишкека" %} &rarr;</a>
 </div>
 {% endblock %}

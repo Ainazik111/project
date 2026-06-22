@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}История Кыргызстана{% endblock %}
+{% block title %}{% trans "История Кыргызстана" %}{% endblock %}
 
 {% block hero %}
 <div class="hero hero--short">
@@ -8,8 +9,8 @@
   <div class="hero__overlay"></div>
   <div class="hero__body">
     <div class="hero__chapter"><span class="hero__chapter-line"></span><span class="hero__chapter-text">Chapter 03</span></div>
-    <h1 class="hero__title">История и культура</h1>
-    <p class="hero__desc">От древних кочевников до современности</p>
+    <h1 class="hero__title">{% trans "История и культура" %}</h1>
+    <p class="hero__desc">{% trans "От древних кочевников до современности" %}</p>
   </div>
 </div>
 {% endblock %}
@@ -18,8 +19,8 @@
 {% if epochs %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Хронология</div>
-    <h2 class="section__title">Эпохи</h2>
+    <div class="section__label">{% trans "Хронология" %}</div>
+    <h2 class="section__title">{% trans "Эпохи" %}</h2>
     <div class="section__divider"></div>
   </div>
   <div class="grid grid--2">
@@ -39,8 +40,8 @@
 {% if events %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Даты</div>
-    <h2 class="section__title">Ключевые события</h2>
+    <div class="section__label">{% trans "Даты" %}</div>
+    <h2 class="section__title">{% trans "Ключевые события" %}</h2>
     <div class="section__divider"></div>
   </div>
   <ul class="list list--center">
@@ -60,8 +61,8 @@
 {% if cultures %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Наследие</div>
-    <h2 class="section__title">Культура</h2>
+    <div class="section__label">{% trans "Наследие" %}</div>
+    <h2 class="section__title">{% trans "Культура" %}</h2>
     <div class="section__divider"></div>
   </div>
   <div class="grid grid--3">
@@ -72,7 +73,7 @@
         <span class="card__badge card__badge--gold">{{ item.category }}</span>
         <h3 class="card__title">{{ item.name }}</h3>
         <p class="card__text">{{ item.description|truncatewords:20 }}</p>
-        {% if item.youtube_link %}<a href="{{ item.youtube_link }}" target="_blank" class="card__link">🎬 Видео</a>{% endif %}
+        {% if item.youtube_link %}<a href="{{ item.youtube_link }}" target="_blank" class="card__link">🎬 {% trans "Видео" %}</a>{% endif %}
         {% if item.audio %}
         <div class="audio">
           <audio controls preload="none"><source src="{{ item.audio.url }}" type="audio/mpeg"></audio>

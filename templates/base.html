@@ -1,6 +1,7 @@
-{% load static %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,14 +15,32 @@
     <a href="{% url 'home' %}" class="nav__logo">Kyrgyzstan <span>atlas</span></a>
     <button class="nav__burger" onclick="this.nextElementSibling.classList.toggle('open')">&#9776;</button>
     <ul class="nav__menu">
-      <li><a href="{% url 'home' %}" class="nav__link">Главная</a></li>
-      <li><a href="{% url 'bishkek_intro' %}" class="nav__link">Бишкек</a></li>
-      <li><a href="{% url 'history' %}" class="nav__link">История</a></li>
-      <li><a href="{% url 'food' %}" class="nav__link">Кухня</a></li>
-      <li><a href="{% url 'nature' %}" class="nav__link">Природа</a></li>
-      <li><a href="{% url 'places' %}" class="nav__link">Места</a></li>
-      <li><a href="{% url 'guide' %}" class="nav__link">Гид</a></li>
+      <li><a href="{% url 'home' %}" class="nav__link">{% trans "Главная" %}</a></li>
+      <li><a href="{% url 'bishkek_intro' %}" class="nav__link">{% trans "Бишкек" %}</a></li>
+      <li><a href="{% url 'history' %}" class="nav__link">{% trans "История" %}</a></li>
+      <li><a href="{% url 'food' %}" class="nav__link">{% trans "Кухня" %}</a></li>
+      <li><a href="{% url 'nature' %}" class="nav__link">{% trans "Природа" %}</a></li>
+      <li><a href="{% url 'places' %}" class="nav__link">{% trans "Места" %}</a></li>
+      <li><a href="{% url 'guide' %}" class="nav__link">{% trans "Гид" %}</a></li>
     </ul>
+    <form action="{% url 'set_language' %}" method="post" class="lang-form">
+      {% csrf_token %}
+      <input name="next" type="hidden" value="{{ request.path }}">
+      <select name="language" onchange="(function(el){
+        var f=el.form,n=f.querySelector('input[name=next]'),p=n.value,l=el.value,cl='{{ LANGUAGE_CODE }}';
+        if(cl!='ru'){p=p.replace('/'+cl,'')||'/';}
+        if(l!='ru'){p='/'+l+p;}
+        n.value=p;f.submit();
+      })(this)" class="lang-select">
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as langs %}
+        {% for lang in langs %}
+          <option value="{{ lang.code }}" {% if lang.code == LANGUAGE_CODE %}selected{% endif %}>
+            {{ lang.name_local }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
   </div>
 </nav>
 
@@ -32,7 +51,7 @@
 </div>
 
 <footer class="footer">
-  <p class="footer__text">&copy; 2026 Kyrgyzstan Atlas &middot; Travel Guide</p>
+  <p class="footer__text">&copy; 2026 Kyrgyzstan Atlas &middot; {% trans "Путеводитель" %}</p>
 </footer>
 
 </body>

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Достопримечательности{% endblock %}
+{% block title %}{% trans "Достопримечательности" %}{% endblock %}
 
 {% block hero %}
 <div class="hero hero--short">
@@ -8,8 +9,8 @@
   <div class="hero__overlay"></div>
   <div class="hero__body">
     <div class="hero__chapter"><span class="hero__chapter-line"></span><span class="hero__chapter-text">Chapter 05</span></div>
-    <h1 class="hero__title">Places to Visit</h1>
-    <p class="hero__desc">Лучшие достопримечательности по всей стране</p>
+    <h1 class="hero__title">{% trans "Достопримечательности" %}</h1>
+    <p class="hero__desc">{% trans "Лучшие места по всей стране" %}</p>
   </div>
 </div>
 {% endblock %}
@@ -27,7 +28,7 @@
         <p class="card__text">{{ place.description|truncatewords:25 }}</p>
       </div>
     </div>
-    {% empty %}<div class="empty"><div class="empty__icon">📍</div><p>Места скоро появятся</p></div>{% endfor %}
+    {% empty %}<div class="empty"><div class="empty__icon">📍</div><p>{% trans "Места скоро появятся" %}</p></div>{% endfor %}
   </div>
 </div>
 {% endblock %}

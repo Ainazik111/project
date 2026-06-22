@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}Kyrgyzstan Atlas{% endblock %}
 
@@ -10,10 +10,10 @@
   <div class="hero__body">
     <div class="hero__chapter">
       <span class="hero__chapter-line"></span>
-      <span class="hero__chapter-text">Travel Guide</span>
+      <span class="hero__chapter-text">{% trans "Путеводитель" %}</span>
     </div>
     <h1 class="hero__title">Kyrgyzstan</h1>
-    <p class="hero__desc">Горы, которые касаются неба. Культура, которая живёт тысячи лет. Гостеприимство, которое невозможно забыть.</p>
+    <p class="hero__desc">{% trans "Горы, которые касаются неба. Культура, которая живёт тысячи лет. Гостеприимство, которое невозможно забыть." %}</p>
   </div>
 </div>
 {% endblock %}
@@ -23,8 +23,8 @@
 {% if info %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">О стране</div>
-    <h2 class="section__title">Добро пожаловать в Кыргызстан</h2>
+    <div class="section__label">{% trans "О стране" %}</div>
+    <h2 class="section__title">{% trans "Добро пожаловать в Кыргызстан" %}</h2>
     <div class="section__divider"></div>
   </div>
 
@@ -52,13 +52,13 @@
   {% for p in population %}
   <div class="stat">
     <div class="stat__value">{{ p.number }}</div>
-    <div class="stat__label">Население</div>
+    <div class="stat__label">{% trans "Население" %}</div>
   </div>
   {% endfor %}
   {% for lang in languages %}
   <div class="stat">
     <div class="stat__value">{{ lang.name }}</div>
-    <div class="stat__label">Язык</div>
+    <div class="stat__label">{% trans "Язык" %}</div>
   </div>
   {% endfor %}
 </div>
@@ -66,42 +66,42 @@
 
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Разделы</div>
-    <h2 class="section__title">Исследуйте</h2>
-    <p class="section__sub">Выберите направление и начните путешествие</p>
+    <div class="section__label">{% trans "Разделы" %}</div>
+    <h2 class="section__title">{% trans "Исследуйте" %}</h2>
+    <p class="section__sub">{% trans "Выберите направление и начните путешествие" %}</p>
     <div class="section__divider"></div>
   </div>
 
   <div class="nav-grid">
     <a href="{% url 'bishkek_intro' %}" class="nav-tile">
       <div class="nav-tile__icon">🏙️</div>
-      <div class="nav-tile__title">Бишкек</div>
-      <div class="nav-tile__desc">Столица и её места</div>
+      <div class="nav-tile__title">{% trans "Бишкек" %}</div>
+      <div class="nav-tile__desc">{% trans "Столица и её места" %}</div>
     </a>
     <a href="{% url 'history' %}" class="nav-tile">
       <div class="nav-tile__icon">📜</div>
-      <div class="nav-tile__title">История</div>
-      <div class="nav-tile__desc">Эпохи и культура</div>
+      <div class="nav-tile__title">{% trans "История" %}</div>
+      <div class="nav-tile__desc">{% trans "Эпохи и культура" %}</div>
     </a>
     <a href="{% url 'food' %}" class="nav-tile">
       <div class="nav-tile__icon">🍖</div>
-      <div class="nav-tile__title">Кухня</div>
-      <div class="nav-tile__desc">Блюда и напитки</div>
+      <div class="nav-tile__title">{% trans "Кухня" %}</div>
+      <div class="nav-tile__desc">{% trans "Блюда и напитки" %}</div>
     </a>
     <a href="{% url 'nature' %}" class="nav-tile">
       <div class="nav-tile__icon">🏔️</div>
-      <div class="nav-tile__title">Природа</div>
-      <div class="nav-tile__desc">Горы и озёра</div>
+      <div class="nav-tile__title">{% trans "Природа" %}</div>
+      <div class="nav-tile__desc">{% trans "Горы и озёра" %}</div>
     </a>
     <a href="{% url 'places' %}" class="nav-tile">
       <div class="nav-tile__icon">📍</div>
-      <div class="nav-tile__title">Места</div>
-      <div class="nav-tile__desc">Достопримечательности</div>
+      <div class="nav-tile__title">{% trans "Места" %}</div>
+      <div class="nav-tile__desc">{% trans "Достопримечательности" %}</div>
     </a>
     <a href="{% url 'guide' %}" class="nav-tile">
       <div class="nav-tile__icon">📱</div>
-      <div class="nav-tile__title">Гид</div>
-      <div class="nav-tile__desc">Советы и контакты</div>
+      <div class="nav-tile__title">{% trans "Гид" %}</div>
+      <div class="nav-tile__desc">{% trans "Советы и контакты" %}</div>
     </a>
   </div>
 </div>
@@ -109,8 +109,8 @@
 {% if games %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Традиции</div>
-    <h2 class="section__title">Национальные игры</h2>
+    <div class="section__label">{% trans "Традиции" %}</div>
+    <h2 class="section__title">{% trans "Национальные игры" %}</h2>
     <div class="section__divider"></div>
   </div>
   <ul class="list list--center">

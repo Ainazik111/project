@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Кыргызская кухня{% endblock %}
+{% block title %}{% trans "Кыргызская кухня" %}{% endblock %}
 
 {% block hero %}
 <div class="hero hero--short">
@@ -8,8 +9,8 @@
   <div class="hero__overlay"></div>
   <div class="hero__body">
     <div class="hero__chapter"><span class="hero__chapter-line"></span><span class="hero__chapter-text">Chapter 02</span></div>
-    <h1 class="hero__title">Кыргызская кухня</h1>
-    <p class="hero__desc">Вкус кочевой культуры — от бешбармака до кумыса</p>
+    <h1 class="hero__title">{% trans "Кыргызская кухня" %}</h1>
+    <p class="hero__desc">{% trans "Вкус кочевой культуры — от бешбармака до кумыса" %}</p>
   </div>
 </div>
 {% endblock %}
@@ -17,8 +18,8 @@
 {% block content %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Блюда</div>
-    <h2 class="section__title">Национальная кухня</h2>
+    <div class="section__label">{% trans "Блюда" %}</div>
+    <h2 class="section__title">{% trans "Национальная кухня" %}</h2>
     <div class="section__divider"></div>
   </div>
   <div class="grid grid--3">
@@ -31,15 +32,15 @@
         <p class="card__text">{{ item.description|truncatewords:25 }}</p>
       </div>
     </div>
-    {% empty %}<div class="empty"><div class="empty__icon">🍖</div><p>Блюда скоро появятся</p></div>{% endfor %}
+    {% empty %}<div class="empty"><div class="empty__icon">🍖</div><p>{% trans "Блюда скоро появятся" %}</p></div>{% endfor %}
   </div>
 </div>
 
 {% if drinks %}
 <div class="section">
   <div class="section__header">
-    <div class="section__label">Напитки</div>
-    <h2 class="section__title">Традиционные напитки</h2>
+    <div class="section__label">{% trans "Напитки" %}</div>
+    <h2 class="section__title">{% trans "Традиционные напитки" %}</h2>
     <div class="section__divider"></div>
   </div>
   <div class="grid grid--3">
@@ -47,7 +48,7 @@
     <div class="card">
       {% if drink.image %}<div class="card__img-wrap"><img src="{{ drink.image.url }}" alt="{{ drink.name }}" class="card__img"></div>{% endif %}
       <div class="card__body">
-        <span class="card__badge card__badge--sage">Напиток</span>
+        <span class="card__badge card__badge--sage">{% trans "Напиток" %}</span>
         <h3 class="card__title">{{ drink.name }}</h3>
         <p class="card__text">{{ drink.description|truncatewords:25 }}</p>
       </div>
