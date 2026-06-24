@@ -7,7 +7,7 @@ class BishkekIntroAdmin(admin.ModelAdmin):
     list_display = ('title',)
 
 
-admin.site.register(Place)
+@admin.register(Place)
 class PlaceAdmin(admin.ModelAdmin):
     list_display = (
         'title',

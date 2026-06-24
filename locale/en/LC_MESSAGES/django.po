@@ -204,3 +204,21 @@ msgstr "Nature articles coming soon"
 
 msgid "Лучшие места по всей стране"
 msgstr "Best places across the country"
+
+msgid "Chapter 01"
+msgstr "Chapter 01"
+
+msgid "Chapter 02"
+msgstr "Chapter 02"
+
+msgid "Chapter 03"
+msgstr "Chapter 03"
+
+msgid "Chapter 04"
+msgstr "Chapter 04"
+
+msgid "Chapter 05"
+msgstr "Chapter 05"
+
+msgid "Chapter 06"
+msgstr "Chapter 06"
